@@ -5,28 +5,40 @@ import urlparse
 import urllib
 
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
-from burgeon import settings
+'''
+    ENV Variables
+
+    FLASK_APP: 
+    BURGEON_SETTINGS: python path for the configuration.
+    BURGEON_SECRET_KEY: the secret key for the app.
+'''
+
 
 def setup_logging():
-    handler = logging.StreamHandler(sys.stdout if settings.LOG_STDOUT else sys.stderr)
-    formatter = logging.Formatter(settings.LOG_FORMAT)
-    handler.setFormatter(formatter)
-    logging.getLogger().addHandler(handler)
-    logging.getLogger().setLevel(settings.LOG_LEVEL)
-    if LOG_TOFILE:
-        fileHandler = logging.FileHandler(settings.LOG_FILENAME)
-        fileHandler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter(app.config.LOG_FORMAT)
+
+    stdoutHandler = logging.StreamHandler(sys.stdout)
+    stdoutHandler.setLevel(logging.DEBUG)
+    stdoutHandler.setFormatter(formatter)
+
+    fileHandler = logging.FileHandler(app.config.LOG_FILENAME)
+    fileHandler.setLevel(logging.DEBUG)
+    fileHandler.setFormatter(formatter)
+
+    if app.config.LOG_TOFILE:
         logging.getLogger().addHandler(fileHandler)
+    if app.config.LOG_STDOUT:
+        logging.getLogger().addHandler(stdoutHandler)
 
-def create_app():
-    app = Flask(__name__)
-    if settings.TEST:
-        app.config['DATABASE'] = settings.TEST_DATABASE
-    else:
-        app.config['DATABASE'] = settings.DATABASE
 
-    init_db(app)
-    return app
+app = Flask(__name__)
 
+app_settings = os.getenv(
+    'BURGEON_SETTINGS',
+    'burgeon.settings.DevelopmentConfig'
+)
+app.config.from_object(app_settings)
 setup_logging()
+db = SQLAlchemy(app)
