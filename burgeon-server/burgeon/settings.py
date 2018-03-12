@@ -20,7 +20,6 @@ class BaseConfig():
 class DevelopmentConfig(BaseConfig):
     # Development Configuration
     DEBUG = True
-    SERVER_NAME = '0.0.0.0:8080'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///burgeon-dev.db'
 
 
@@ -28,11 +27,9 @@ class TestingConfig(BaseConfig):
     # Testing Configuration
     DEBUG = True
     TESTING = True
-    SERVER_NAME = '0.0.0.0:8080'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
 
 
 class ProductionConfig(BaseConfig):
     # Production Configuration
-    SERVER_NAME = '0.0.0.0:8080'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///burgeon.db'

@@ -5,11 +5,12 @@ import logging
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 '''
     ENV Variables
 
-    FLASK_APP: 
+    FLASK_APP: burgeon
     BURGEON_SETTINGS: python path for the configuration.
     BURGEON_SECRET_KEY: the secret key for the app.
 '''
@@ -37,9 +38,15 @@ def setup_logging():
         logging.getLogger().addHandler(stdoutHandler)
 
 app = Flask(__name__)
-app.config.from_object('burgeon.settings.DevelopmentConfig')
+app.config.from_object(app_settings)
 setup_logging()
 bcrypt = Bcrypt(app)
+login = LoginManager(app)
 db = SQLAlchemy(app)
 
-import burgeon.views
+# Load frontend views
+from burgeon import views
+
+# Initialize the app blueprints for the API
+from burgeon.auth import auth_blueprint
+app.register_blueprint(auth_blueprint)

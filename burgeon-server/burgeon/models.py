@@ -1,8 +1,10 @@
 import datetime
 
-from burgeon import app, db, bcrypt
+from flask_login import UserMixin
 
-class User(db.Model):
+from burgeon import app, db, bcrypt, login
+
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
@@ -18,7 +20,4 @@ class User(db.Model):
         self.admin = admin
 
     def __repr__(self):
-        return '<User %r>' % self.username
-    
-    def check_password_hash(password):
-        return bcrypt.check_password_hash(self.password, password)
+        return '<User {self.username}>'.format(self=self)
