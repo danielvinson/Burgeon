@@ -42,6 +42,7 @@ app.config.from_object(app_settings)
 setup_logging()
 bcrypt = Bcrypt(app)
 login = LoginManager(app)
+login.login_view = 'login'
 db = SQLAlchemy(app)
 
 # Load frontend views
