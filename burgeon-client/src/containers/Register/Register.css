@@ -1,0 +1,10 @@
+.Register {
+    padding: 25px;
+    
+    margin-left: var(--global-margin-left);
+    margin-right: var(--global-margin-right);
+    
+    background: rgba(220,220,220,1);
+    border: 1px solid rgba(255,255,255,0.9);
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
