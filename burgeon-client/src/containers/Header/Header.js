@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import burgeonAPI from '../api.js';
+import burgeonAPI from '../../api.js';
 
 import './Header.css';
 
@@ -22,7 +22,10 @@ export default class Header extends Component {
     const userString = JSON.stringify(this.state.user);
     
     return(
-        <div>{userString}</div>
+        <div className="Header">
+          <div className="title">Burgeon</div>
+          <div>{userString}</div>
+        </div>
     )
   }
 }

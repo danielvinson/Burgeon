@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import burgeonAPI from '../api.js';
+import burgeonAPI from '../../api.js';
 
 import './Home.css';
 

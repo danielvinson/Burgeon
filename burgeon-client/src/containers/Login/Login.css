@@ -1,0 +1,7 @@
+.Login {
+    
+    margin-left: var(--global-margin-left);
+    margin-right: var(--global-margin-right);
+    
+    background: rgba(220,220,220,1);
+}

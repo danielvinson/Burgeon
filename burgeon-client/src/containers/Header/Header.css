@@ -1,0 +1,19 @@
+.Header {
+    width: 100%;
+    height: 40px;
+    
+    background: rgba(35,168,52,1);
+    box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Header .title
+{
+    padding: 5px;
+    font-size: 1.4em;
+    font-weight: 400;
+}

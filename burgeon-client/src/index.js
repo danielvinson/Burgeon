@@ -4,12 +4,12 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import './base.css';
 
-import Header from './containers/Header';
-import Menu from './containers/Menu';
+import Header from './containers/Header/Header';
+import Menu from './containers/Menu/Menu';
 
-import Home from './containers/Home';
-import Login from './containers/Login';
-import Register from './containers/Register';
+import Home from './containers/Home/Home';
+import Login from './containers/Login/Login';
+import Register from './containers/Register/Register';
 
 const Burgeon = () => (
     <Router>
