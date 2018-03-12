@@ -45,6 +45,9 @@ login = LoginManager(app)
 login.login_view = 'login'
 db = SQLAlchemy(app)
 
+# Add cli
+from burgeon import cli
+
 # Load frontend views
 from burgeon import views
 

@@ -14,7 +14,7 @@ export default class Header extends Component {
   }
   
   componentWillMount() {
-    this.setState({ user: burgeonAPI.getUser() });
+    burgeonAPI.getUser().then((response) => this.setState({ user: response.data }));
   }
   
   render() {

@@ -23,9 +23,10 @@ class UserAPI(MethodView):
                     'registered_on': user.registered_on
                 }
             }
+            return make_response(jsonify(responseObject), 200)
         else:
             responseObject = {
                 'status': 'fail',
                 'message': 'You are not logged in.'
             }
-            return make_response(jsonify(responseObject)), 401
+            return make_response(jsonify(responseObject), 401)

@@ -28,8 +28,6 @@ class RegistrationAPI(MethodView):
                 db.session.add(user)
                 db.session.commit()
                 
-                # generate the auth token
-                auth_token = user.encode_auth_token(user.id)
                 responseObject = {
                     'status': 'success',
                     'message': 'Successfully registered.'

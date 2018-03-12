@@ -35,22 +35,30 @@ let burgeonAPI = {
     
     login(email, password, rememberMe){
         // Log a user in
-        this.postData('/auth/login', {email, password, rememberMe}).then((response) => { return response });
+        return new Promise((resolve, reject) => {
+            this.postData('/auth/login', {email, password, rememberMe}).then((response) => { resolve(response) });
+        });
     },
     
     logout(){
         // Log the currently logged in user out
-        this.postData('/auth/logout', {}).then((response) => { return response });
+        return new Promise((resolve, reject) => {
+            this.postData('/auth/logout', {}).then((response) => { resolve(response) });
+        });
     },
     
     getUser(){
         // Returns information on the currently logged in user
-        this.getData('/auth/user').then((response) => { return response });
+        return new Promise((resolve, reject) => {
+            this.getData('/auth/user').then((response) => { resolve(response) });
+        });
     },
     
     register(email, password){
         // Registers a new user
-        this.postData('/auth/register', {email, password}).then((response) => { return response });
+        return new Promise((resolve, reject) => {
+            this.postData('/auth/register', {email, password}).then((response) => { resolve(response) });
+        });
     }
 }
 
