@@ -4,9 +4,16 @@
     
     background: rgba(0,135,0,1);
     box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
 
+.menuItemContainer {
+    height: 40px;
+    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    margin-left: var(--global-margin-left);
+    margin-right: var(--global-margin-right);
 }

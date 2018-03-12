@@ -18,14 +18,20 @@ export default class Header extends Component {
   }
   
   render() {
-    
-    const userString = JSON.stringify(this.state.user);
-    
+
     return(
-        <div className="Header">
+      <div className="Header">
+        <div className="headerItemContainer">
           <div className="title">Burgeon</div>
-          <div>{userString}</div>
+          <div className="profile">
+            {this.state.user != {} ? (
+            <div>Welcome, {this.state.user.email}</div>
+            ) : (
+            <div>You're not logged in!</div>
+            )}
+          </div>
         </div>
+      </div>
     )
   }
 }

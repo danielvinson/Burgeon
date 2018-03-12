@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700');
+
 :root
 {
   /* Base background colors */
@@ -12,7 +14,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   
   background: var(--background-body);
 }

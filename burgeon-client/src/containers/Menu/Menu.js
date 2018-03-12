@@ -16,9 +16,11 @@ export default class Menu extends Component {
     
     return(
         <div className="Menu">
-          <Link to="/">Home</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <div className="menuItemContainer">
+            <Link to="/">Home</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </div>
         </div>
     )
   }
