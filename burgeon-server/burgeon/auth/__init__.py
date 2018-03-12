@@ -35,7 +35,7 @@ auth_blueprint.add_url_rule(
     methods=['POST']
 )
 auth_blueprint.add_url_rule(
-    '/auth/status',
+    '/auth/user',
     view_func=user_view,
     methods=['GET']
 )
