@@ -14,6 +14,7 @@ class BaseConfig():
 
     # Database
     DATABASE_NAME = 'burgeon'
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 
 class DevelopmentConfig(BaseConfig):

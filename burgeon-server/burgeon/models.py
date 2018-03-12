@@ -1,7 +1,6 @@
 import datetime
-import jwt
 
-from burgeon import app, db
+from burgeon import app, db, bcrypt
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -14,9 +13,12 @@ class User(db.Model):
 
     def __init__(self, email, password, admin=False):
         self.email = email
-        self.password = ''
+        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
         self.registered_on = datetime.datetime.now()
         self.admin = admin
 
     def __repr__(self):
         return '<User %r>' % self.username
+    
+    def check_password_hash(password):
+        return bcrypt.check_password_hash(self.password, password)

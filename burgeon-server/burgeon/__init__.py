@@ -4,6 +4,7 @@ import logging
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 '''
     ENV Variables
@@ -12,6 +13,12 @@ from flask_sqlalchemy import SQLAlchemy
     BURGEON_SETTINGS: python path for the configuration.
     BURGEON_SECRET_KEY: the secret key for the app.
 '''
+
+# Default to DevelopmentConfig if ENV variable is not set
+app_settings = os.getenv(
+    'BURGEON_SETTINGS',
+    'burgeon.settings.DevelopmentConfig'
+)
 
 def setup_logging():
     formatter = logging.Formatter(app.config['LOG_FORMAT'])
@@ -29,18 +36,10 @@ def setup_logging():
     if app.config['LOG_STDOUT']:
         logging.getLogger().addHandler(stdoutHandler)
 
-
 app = Flask(__name__)
-
-app_settings = os.getenv(
-    'BURGEON_SETTINGS',
-    'burgeon.settings.DevelopmentConfig'
-)
-
 app.config.from_object('burgeon.settings.DevelopmentConfig')
-
 setup_logging()
-
+bcrypt = Bcrypt(app)
 db = SQLAlchemy(app)
 
 import burgeon.views
