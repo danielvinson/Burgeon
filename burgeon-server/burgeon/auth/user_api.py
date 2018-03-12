@@ -13,7 +13,7 @@ class UserAPI(MethodView):
     """
     def get(self):
         user = current_user
-        if user:
+        if user and not user.is_anonymous:
             responseObject = {
                 'status': 'success',
                 'data': {
