@@ -59,6 +59,8 @@ __Backend__
 * [Flask]() - Python Web Framework
 * [SQLAlchemy]() Python ORM
 * [SQLite]() Database (will be updated to Postgres for production)
+
+
 __Frontend__
 * [React]() - Frontend Framework
 * [Webpack]() - Build Tool
