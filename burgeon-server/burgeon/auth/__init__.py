@@ -11,6 +11,7 @@ log = logging.getLogger('burgeon.auth')
 # Loader for flask-login
 from burgeon import login
 from burgeon.models import User
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))

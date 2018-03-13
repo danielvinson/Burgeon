@@ -40,7 +40,10 @@ class User(UserMixin, db.Model):
         self.staff = kwargs.get('staff', None)
 
     def __repr__(self):
-        return '<User {self.username}>'.format(self=self)
+        return '<User {self.email}>'.format(self=self)
+    
+    def add_points(self, points):
+        self.points += points
 
 
 class Organization(db.Model):
