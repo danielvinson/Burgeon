@@ -12,9 +12,10 @@ class BurgeonTestCase(TestCase):
 
     def setUp(self):
         self.app = self.create_app()
-        db.create_all()
-        db.session.commit()
+        self.db = db
+        self.db.create_all()
+        self.db.session.commit()
 
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        self.db.session.remove()
+        self.db.drop_all()
