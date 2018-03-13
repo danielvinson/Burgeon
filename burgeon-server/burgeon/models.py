@@ -63,6 +63,9 @@ class Organization(db.Model):
     
     def add_user(self, user):
         self.users.append(user)
+    
+    def remove_user(self, user):
+        self.users.remove(user)
 
 ################################
 ### Tracks, Goals, and Tasks ###
