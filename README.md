@@ -18,13 +18,13 @@ Each *Task* is a single, time-trackable action which is part of a larger goal.  
 
 ## MVP features
 
-* [checkbox:unchecked] *User* registration, login/logout, Profile page.
-* [checkbox:unchecked] *Track*s.  Create/Archive/Delete.
-* [checkbox:unchecked] *Goal*s.  Create/Delete.
-* [checkbox:unchecked] *Task*s.  Create/Complete/Edit/Update Notes/Delete.
-* [checkbox:unchecked] *Notepad*s.  Edit.
-* [checkbox:unchecked] Some amount of curated goal tracks for different specialties, with tips for each step (similar to the many "Learn Machine Learning" or "Google Interview Prep" repos).
-* [checkbox:unchecked] Home view - charts with progress (points or tasks) over time, list of current *Track*s, create/find new *Track*.  Suggested tracks.
+* [ ] *User* registration, login/logout, Profile page.
+* [ ] *Track*s.  Create/Archive/Delete.
+* [ ] *Goal*s.  Create/Delete.
+* [ ] *Task*s.  Create/Complete/Edit/Update Notes/Delete.
+* [ ] *Notepad*s.  Edit.
+* [ ] Some amount of curated goal tracks for different specialties, with tips for each step (similar to the many "Learn Machine Learning" or "Google Interview Prep" repos).
+* [ ] Home view - charts with progress (points or tasks) over time, list of current *Track*s, create/find new *Track*.  Suggested tracks.
 
 ## Release features
 
