@@ -1,0 +1,19 @@
+.Footer {
+    flex-shrink: 0;
+    
+    width: 100%;
+    height: 20px;
+    
+    border-top: 1px solid var(--dark-brown);
+    
+    background: var(--mid-brown);
+}
+
+.footerContainer {
+    margin-left: var(--global-margin-left);
+    margin-right: var(--global-margin-right);
+}
+
+.footerGroup {
+    color: #fff;
+}

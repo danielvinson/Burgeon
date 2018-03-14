@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from "react-router-dom";
 
 import burgeonAPI from '../../api.js';
 
@@ -35,49 +36,54 @@ export default class Login extends Component {
   handleSubmitLogin(event) {
     event.preventDefault();
 
-    burgeonAPI.login(this.state.email, this.state.password, this.state.rememberMe);
+    burgeonAPI.login(this.state.email, this.state.password, this.state.rememberMe).then((response) => {
+      this.props.history.push('/');
+      window.location.reload();
+    });
   }
 
   render() {
     return (
       <div className="Login">
-        <form onSubmit={this.handleSubmitLogin}>
-          <div className="formGroup">
-            <label>Email</label>
-            <input
-              autoFocus
-              name="email"
-              type="email"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="formGroup">
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="formGroup">
-            <label>Remember Me</label>
-            <input
-              name="rememberMe"
-              type="checkbox"
-              checked={this.state.rememberMe}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="formGroup">
-            <button
-              type="submit"
-            >
-              Login
-            </button>
-          </div>
-        </form>
+        <div className="loginContainer">
+          <form className="loginForm" onSubmit={this.handleSubmitLogin}>
+            <div className="formGroup">
+              <label>Email</label>
+              <input
+                autoFocus
+                name="email"
+                type="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="formGroup">
+              <label>Password</label>
+              <input
+                name="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="formGroup">
+              <label>Remember Me</label>
+              <input
+                name="rememberMe"
+                type="checkbox"
+                checked={this.state.rememberMe}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="formGroup">
+              <button
+                type="submit"
+              >
+                Login
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

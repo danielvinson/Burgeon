@@ -39,7 +39,6 @@ export default class Register extends Component {
   }
   
   render() {
-    
     return(
       <div className="Register">
         <form onSubmit={this.handleSubmitRegistration}>
@@ -75,7 +74,7 @@ export default class Register extends Component {
             <button
               type="submit"
             >
-              Login
+              Register
             </button>
           </div>
         </form>

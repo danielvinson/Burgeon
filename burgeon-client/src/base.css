@@ -1,21 +1,64 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700');
 
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
 :root
 {
-  /* Base background colors */
-  --background-header:      rgba(218,49,44,1);
-  --background-menu:        rgba(0,136,206,1);
-  --background-body:        rgba(67,67,67,1);
+  /* Blue Forest + Fire Color Palette */
+  --ice-blue:     rgb(84, 171, 185);
+  --night-sky:    rgb(5, 21, 45);
+  --yellow-sun:   rgb(249, 220, 121);
+
+  /* Nature Color Palette */
+  --light-green: #cfff95;
+  --mid-green:   #9ccc65;
+  --dark-green:  #6b9b37;
+
+  --light-brown: #a98274;
+  --mid-brown:   #795548;
+  --dark-brown:  #4b2c20;
+
+  --light-amber: #fffd61;
+  --mid-amber:   #ffca28;
+  --dark-amber:  #c79a00;
 
   --global-margin-left:   7%;
   --global-margin-right:  7%;
+  
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  
   font-family: 'Lato', sans-serif;
   
-  background: var(--background-body);
+  background: rgb(240,240,220) no-repeat center center fixed;
+  background-size: cover;
 }
 
+#reactContainer {
+  /* Make sure the container fits the screen, displays in columns */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  /* Make the content stretches to fit the page... */
+  flex: 1 0 auto;
+}
