@@ -41,43 +41,45 @@ export default class Register extends Component {
   render() {
     return(
       <div className="Register">
-        <form onSubmit={this.handleSubmitRegistration}>
-          <div className="formGroup">
-            <label>Email</label>
-            <input
-              autoFocus
-              name="email"
-              type="email"
-              value={this.state.email}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="formGroup">
-            <label>Password</label>
-            <input
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="formGroup">
-            <label>Verify Password</label>
-            <input
-              name="password2"
-              type="password"
-              value={this.state.password2}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div className="formGroup">
-            <button
-              type="submit"
-            >
-              Register
-            </button>
-          </div>
-        </form>
+        <div className="registerContainer"> 
+          <form onSubmit={this.handleSubmitRegistration}>
+            <div className="formGroup">
+              <label>Email</label>
+              <input
+                autoFocus
+                name="email"
+                type="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="formGroup">
+              <label>Password</label>
+              <input
+                name="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="formGroup">
+              <label>Verify Password</label>
+              <input
+                name="password2"
+                type="password"
+                value={this.state.password2}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="formGroup">
+              <button
+                type="submit"
+              >
+                Register
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     )
   }
