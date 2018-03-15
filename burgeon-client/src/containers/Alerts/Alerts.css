@@ -16,7 +16,7 @@
 
 .Alert {
     max-width: 400px;
-    margin: 20px;
+    margin: 10px;
     padding: 5px;
     
     border-radius: 10px;
@@ -55,12 +55,11 @@
 
 .alertTransitions-enter {
     transform: translateY(-100%);
-    
 }
 
 .alertTransitions-enter.alertTransitions-enter-active {
     transform: translateY(0);
-    transition: transform 300ms ease-out;
+    transition: transform 200ms ease-out;
 }
 
 .alertTransitions-leave {
@@ -71,5 +70,5 @@
 .alertTransitions-leave.alertTransitions-leave-active {
     transform: translateY(300%);
     opacity: 0;
-    transition: transform 300ms ease-out, opacity 200ms ease-out;
+    transition: transform 200ms ease-out, opacity 200ms ease-out;
 }

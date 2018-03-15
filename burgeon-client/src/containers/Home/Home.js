@@ -14,20 +14,19 @@ export default class Home extends Component {
     };
     
     this.handleAddPoints = this.handleAddPoints.bind(this);
+    this.handleAddAlert = this.handleAddAlert.bind(this);
   }
   
   handleAddPoints(event) {
     event.preventDefault();
     
-    burgeonAPI.addPoints(5);
+    dispatch.user.addPoints(5);
   }
   
-  handleAddAlert(event) {
-    event.preventDefault();
-    
+  handleAddAlert(type) {
     dispatch.alerts.create({
-      type: 'info', 
-      message: 'Alert Message'
+      type: type,
+      message: type + ' Alert Message',
     });
   }
   
@@ -36,7 +35,9 @@ export default class Home extends Component {
     return(
         <div>
           <button onClick={this.handleAddPoints}>Add 5 Points</button>
-          <button onClick={this.handleAddAlert}>Add an Alert</button>
+          <button onClick={() => this.handleAddAlert('error')}>Add an Error Alert</button>
+          <button onClick={() => this.handleAddAlert('warning')}>Add a Warning Alert</button>
+          <button onClick={() => this.handleAddAlert('info')}>Add an Info Alert</button>
         </div>
     )
   }

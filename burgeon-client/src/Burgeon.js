@@ -19,6 +19,7 @@ export default class Burgeon extends Component {
   
   componentWillMount() {
     // Initialize login state
+    dispatch.user.update();
   }
   
   render() {
