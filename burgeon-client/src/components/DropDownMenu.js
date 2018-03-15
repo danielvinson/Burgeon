@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './DropDownMenu.css';
 
-export default class DropDownMenu extends Component {
+class DropDownMenu extends Component {
+  /*
+  //  Reusable DropDown Menu Component
+  */
   constructor(props) {
     super(props);
   }
@@ -17,3 +21,9 @@ export default class DropDownMenu extends Component {
     )
   }
 }
+
+DropDownMenu.propTypes = {
+  className: PropTypes.string
+};
+
+export default DropDownMenu

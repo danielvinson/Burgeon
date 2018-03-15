@@ -33,6 +33,10 @@ let burgeonAPI = {
             }).then(response => response.json())
     },
     
+    /* Auth 
+        API for Authentication
+    */
+    
     login(email, password, rememberMe) {
         // Log a user in
         return new Promise((resolve, reject) => {
@@ -47,13 +51,6 @@ let burgeonAPI = {
         });
     },
     
-    getUser() {
-        // Returns information on the currently logged in user
-        return new Promise((resolve, reject) => {
-            this.getData('/auth/user').then((response) => { resolve(response) });
-        });
-    },
-    
     register(email, password) {
         // Registers a new user
         return new Promise((resolve, reject) => {
@@ -61,10 +58,31 @@ let burgeonAPI = {
         });
     },
     
+    /* User 
+        API for the current user
+    */
+    
+    getUser() {
+        // Returns information on the currently logged in user
+        return new Promise((resolve, reject) => {
+            this.getData('/auth/user').then((response) => { resolve(response) });
+        });
+    },
+    
+    /* Social
+        API for interaction with other users
+    */
+    
     addPoints(count) {
         return new Promise((resolve, reject) => {
             this.postData('/social/add_points', {count}).then((response) => { resolve(response) });
         });
+    },
+    
+    getProfile() {
+        return new Promise((resolve, reject) => {
+            this.getData('').then((response) => { resolve(response) });
+        })
     },
 }
 

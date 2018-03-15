@@ -3,6 +3,23 @@ import octicons from 'octicons';
 
 import './Icons.css';
 
+
+class Icon extends Component {
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    const svg = octicons[this.props.icon].toSVG({ width: this.props.width || octicons[this.props.icon].width });
+    return(
+        <div 
+            className={`icon ${this.props.name}`}
+            dangerouslySetInnerHTML={{ __html: svg }} 
+        />
+    )
+  }
+}
+
 class Gear extends Component {
   constructor(props) {
     super(props);
@@ -54,7 +71,10 @@ class Flame extends Component {
   }
 }
 
+
+
 export {
+    Icon,
     Gear,
     Bell,
     Flame
