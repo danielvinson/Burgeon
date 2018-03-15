@@ -41,6 +41,17 @@ export const user = {
       const response = await burgeonAPI.logout();
       if (response.status == 'success'){
           this._logout();
+          this.update();
+      }
+    },
+    async login(payload, rootState) {
+      const response = await burgeonAPI.login(
+        payload.email, 
+        payload.password, 
+        payload.rememberMe
+      );
+      if (response.status == 'success'){
+          this.update();
       }
     },
     async addPoints(points, rootState) {
@@ -54,9 +65,7 @@ export const user = {
 
 export const alerts = {
   state: {
-    'alerts': [
-        {'id': 'test', 'type': 'error', 'message': 'Test Error'}
-    ]
+    'alerts': []
   },
   reducers: {
     create(state, params) {

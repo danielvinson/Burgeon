@@ -3,6 +3,14 @@
     width: 350px;
 }
 
+.settingsMenuItemGroup {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+}
+
+.settingsMenuItemGroup:last-child {
+    border-bottom: none;
+}
+
 .settingsMenuItem {
-    padding: 5px;
+    padding: 10px;
 }

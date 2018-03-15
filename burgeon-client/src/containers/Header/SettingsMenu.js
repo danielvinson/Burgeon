@@ -19,7 +19,7 @@ class SettingsMenu extends Component {
     
     // redirect home
     dispatch.user.logout().then(() => {
-      window.location.reload();
+      //dispatch.user.update();
     })
   }
 
@@ -28,14 +28,26 @@ class SettingsMenu extends Component {
       <div>
         {this.props.visible ? (
           <DropDownMenu className="settingsMenu">
-            <div className="settingsMenuItem">
-              <div>Welcome, {this.props.user.email || ''}</div>
+            <div className="settingsMenuItemGroup">
+              <div className="settingsMenuItem">
+                <div>Welcome, {this.props.user.email || ''}</div>
+              </div>
             </div>
-            <div className="settingsMenuItem">
-              <div>Menu Item</div>
+            <div className="settingsMenuItemGroup">
+              <div className="settingsMenuItem">
+                <div>Menu Item</div>
+              </div>
+              <div className="settingsMenuItem">
+                <div>Menu Item</div>
+              </div>
+              <div className="settingsMenuItem">
+                <div>Menu Item</div>
+              </div>
             </div>
-            <div className="settingsMenuItem">
-              <div onClick={this.handleLogOut}>Log Out</div>
+            <div className="settingsMenuItemGroup">
+              <div className="settingsMenuItem">
+                <div onClick={this.handleLogOut}>Log Out</div>
+              </div>
             </div>
           </DropDownMenu>
         ) : null}

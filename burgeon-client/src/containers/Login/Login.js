@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
+import { dispatch } from '@rematch/core'
 
 import burgeonAPI from '../../api.js';
 
@@ -35,10 +35,11 @@ export default class Login extends Component {
 
   handleSubmitLogin(event) {
     event.preventDefault();
-
-    burgeonAPI.login(this.state.email, this.state.password, this.state.rememberMe).then((response) => {
-      this.props.history.push('/');
-      window.location.reload();
+    
+    dispatch.user.login({
+      'email': this.state.email, 
+      'password': this.state.password, 
+      'rememberMe': this.state.rememberMe
     });
   }
 
