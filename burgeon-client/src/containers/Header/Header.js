@@ -88,10 +88,10 @@ class Header extends Component {
                 </div>
               </div>
               <div className="profileIconGroup flame">
-                <Flame width={24} />
                 <div className="profilePoints">
                   {this.state.user.points}
                 </div>
+                <Flame width={12} />
               </div>
               <div className="profileIconGroup gear" onClick={this.handleIconClick}>
                 <Gear width={24} />

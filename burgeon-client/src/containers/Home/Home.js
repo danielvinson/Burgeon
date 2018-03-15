@@ -11,12 +11,22 @@ export default class Home extends Component {
     this.state = {
 
     };
+    
+    this.handleAddPoints = this.handleAddPoints.bind(this);
+  }
+  
+  handleAddPoints(event) {
+    event.preventDefault();
+    
+    burgeonAPI.addPoints(5);
   }
   
   render() {
     
     return(
-        <div></div>
+        <div>
+          <button onClick={this.handleAddPoints}>Add 5 Points</button>
+        </div>
     )
   }
 }

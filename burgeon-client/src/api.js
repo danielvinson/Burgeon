@@ -33,35 +33,39 @@ let burgeonAPI = {
             }).then(response => response.json())
     },
     
-    login(email, password, rememberMe){
+    login(email, password, rememberMe) {
         // Log a user in
         return new Promise((resolve, reject) => {
             this.postData('/auth/login', {email, password, rememberMe}).then((response) => { resolve(response) });
         });
     },
     
-    logout(){
+    logout() {
         // Log the currently logged in user out
         return new Promise((resolve, reject) => {
             this.postData('/auth/logout', {}).then((response) => { resolve(response) });
         });
     },
     
-    getUser(){
+    getUser() {
         // Returns information on the currently logged in user
         return new Promise((resolve, reject) => {
             this.getData('/auth/user').then((response) => { resolve(response) });
         });
     },
     
-    register(email, password){
+    register(email, password) {
         // Registers a new user
         return new Promise((resolve, reject) => {
             this.postData('/auth/register', {email, password}).then((response) => { resolve(response) });
         });
-    }
+    },
+    
+    addPoints(count) {
+        return new Promise((resolve, reject) => {
+            this.postData('/social/add_points', {count}).then((response) => { resolve(response) });
+        });
+    },
 }
 
 export default burgeonAPI;
-
-

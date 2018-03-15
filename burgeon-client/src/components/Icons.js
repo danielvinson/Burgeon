@@ -13,7 +13,7 @@ class Gear extends Component {
     
     return(
         <div 
-            className="Gear"
+            className="icon Gear"
             dangerouslySetInnerHTML={{ __html: gearSVG }} 
         />
     )
@@ -30,7 +30,7 @@ class Bell extends Component {
     
     return(
         <div 
-            className="Bell"
+            className="icon Bell"
             dangerouslySetInnerHTML={{ __html: bellSVG }} 
         />
     )
@@ -47,7 +47,7 @@ class Flame extends Component {
     
     return(
         <div 
-            className="Flame"
+            className="icon Flame"
             dangerouslySetInnerHTML={{ __html: flameSVG }} 
         />
     )

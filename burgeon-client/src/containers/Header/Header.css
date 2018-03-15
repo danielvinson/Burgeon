@@ -7,8 +7,6 @@
     border-bottom: 3px solid rgba(255,255,255,0.1);
 }
 
-
-
 .headerContainer {
     display: flex;
     flex-direction: row;
@@ -51,10 +49,23 @@
     padding: 3px;
 }
 
+.profileIconGroup .bell, .profileIconGroup .gear {
+    cursor: pointer;
+}
+
+.profileIconGroup .flame {
+    color: #f70;
+}
+
 .headerContainer .profilePoints {
-    padding-left: 10px;
+    padding: 5px;
     font-size: 1em;
     font-weight: 700;
+    
+    background: linear-gradient(0deg, #f00, #ff0);
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 /* Settings Menu */
