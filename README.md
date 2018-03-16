@@ -54,7 +54,7 @@ Each *Task* is a single, time-trackable action which is part of a larger goal.  
 On EC2:
 
 Install base dependencies
-`
+```
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get install -y build-essential
@@ -62,17 +62,17 @@ sudo apt-get install -y python3 python3-pip
 sudo apt-get install -y nginx
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
-`
+```
 
 Set environment variables (should be done from deploy script)
-`
+```
 export FLASK_APP=burgeon
 export FLASK_DEBUG=1
-`
+```
 
 
 Clone project
-`
+```
 sudo mkdir /burgeon
 sudo chown ubuntu /burgeon
 cd /burgeon
@@ -80,26 +80,32 @@ git clone https://github.com/danielvinson/Burgeon.git
 (Enter GitHub credentials)
 sudo chown ubuntu -R Burgeon/
 cd Burgeon
-`
+```
 
 Install backend dependencies
-`
+```
 sudo pip3 install --upgrade pip
 sudo pip3 install /burgeon-server/requirements.txt
-`
+```
 
 Install frontend dependencies and build the frontend
-`
+```
 cd burgeon-client/
 sudo npm install
 sudo npm install --global webpack
 sudo node_modules/.bin/webpack
-`
+```
 
 Start the development server with:  (change port to whatever you want it serving on)
-`
+```
+cd /burgeon/Burgeon/burgeon-server
 sudo -E python3 -m flask run --host=0.0.0.0 --port=8080
-`
+```
+
+You can start a production server by first updating the nginx configuration
+with a proxy_pass to the port you are running your flask server on.
+I will include instructions for this later.
+
 
 ## Running the tests
 
