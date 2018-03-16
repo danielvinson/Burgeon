@@ -51,18 +51,73 @@ Each *Task* is a single, time-trackable action which is part of a larger goal.  
 
 ## Instalation/Deployment
 
+On EC2:
+
+Install base dependencies
+`
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install -y build-essential
+sudo apt-get install -y python3 python3-pip
+sudo apt-get install -y nginx
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+`
+
+Set environment variables (should be done from deploy script)
+`
+export FLASK_APP=burgeon
+export FLASK_DEBUG=1
+`
+
+
+Clone project
+`
+sudo mkdir /burgeon
+sudo chown ubuntu /burgeon
+cd /burgeon
+git clone https://github.com/danielvinson/Burgeon.git
+(Enter GitHub credentials)
+sudo chown ubuntu -R Burgeon/
+cd Burgeon
+`
+
+Install backend dependencies
+`
+sudo pip3 install --upgrade pip
+sudo pip3 install /burgeon-server/requirements.txt
+`
+
+Install frontend dependencies and build the frontend
+`
+cd burgeon-client/
+sudo npm install
+sudo npm install --global webpack
+sudo node_modules/.bin/webpack
+`
+
+Start the development server with:  (change port to whatever you want it serving on)
+`
+sudo -E python3 -m flask run --host=0.0.0.0 --port=8080
+`
+
 ## Running the tests
 
 ## Built With
 
 __Backend__
 * [Flask]() - Python Web Framework
-* [SQLAlchemy]() Python ORM
+* [SQLAlchemy]() - Python ORM
+* [Flask-SQLAlchemy]() - Flask+SQLAlchemy integration
+* [Bcrypt]() - Password hashing library
+* [Flask-Bcrypt]() - Flask Bcrypt integration
 * [SQLite]() Database (will be updated to Postgres for production)
 
 
 __Frontend__
 * [React]() - Frontend Framework
+* [Redux]() - State manager
+* [Rematch]() - Redux wrapper for better syntax/defaults
 * [Webpack]() - Build Tool
 
 ## Author

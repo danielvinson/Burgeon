@@ -22,6 +22,8 @@ class Profile extends Component {
     };
     
     this.handleIconClick = this.handleIconClick.bind(this);
+    this.handleSettingsVisibilityUpdate = this.handleSettingsVisibilityUpdate.bind(this);
+    this.handleNotificationsVisibilityUpdate = this.handleNotificationsVisibilityUpdate.bind(this);
   }
   
   handleIconClick(event) {
@@ -32,16 +34,26 @@ class Profile extends Component {
     
     if (icon == 'gear'){
       settingsMenuVisible = !settingsMenuVisible;
-      notificationsMenuVisible = false;
     }
     if (icon == 'bell'){
-      settingsMenuVisible = false;
       notificationsMenuVisible = !notificationsMenuVisible;
     }
     
     this.setState({
       settingsMenuVisible: settingsMenuVisible,
       notificationsMenuVisible: notificationsMenuVisible,
+    });
+  }
+  
+  handleSettingsVisibilityUpdate(visible) {
+    this.setState({
+      'settingsMenuVisible': visible
+    });
+  }
+
+  handleNotificationsVisibilityUpdate(visible) {
+    this.setState({
+      'notificationsMenuVisible': visible
     });
   }
 
@@ -54,7 +66,10 @@ class Profile extends Component {
           <div className="profileContainer loggedIn">
             <div className="profileIconGroup bell" onClick={this.handleIconClick}>
               <Bell width={24} />
-              <NotificationsMenu visible={this.state.notificationsMenuVisible} />
+              <NotificationsMenu 
+                visible={this.state.notificationsMenuVisible} 
+                updateVisibility={this.handleNotificationsVisibilityUpdate} 
+              />
             </div>
             <div className="profileIconGroup flame">
               <div className="profilePoints">
@@ -64,7 +79,10 @@ class Profile extends Component {
             </div>
             <div className="profileIconGroup gear" onClick={this.handleIconClick}>
               <Gear width={24} />
-              <SettingsMenu visible={this.state.settingsMenuVisible} />
+              <SettingsMenu 
+                visible={this.state.settingsMenuVisible} 
+                updateVisibility={this.handleSettingsVisibilityUpdate} 
+              />
             </div>
           </div>
         ) : (

@@ -23,7 +23,11 @@ class SettingsMenu extends Component {
     return(
       <div>
         {this.props.visible ? (
-          <DropDownMenu className="settingsMenu">
+          <DropDownMenu 
+            className="settingsMenu"
+            visible={this.props.visible}
+            updateVisibility={this.props.updateVisibility}
+          >
             <div className="settingsMenuItemGroup">
               <div className="settingsMenuItem">
                 <div>Welcome, {this.props.user.email || ''}</div>
