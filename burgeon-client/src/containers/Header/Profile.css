@@ -1,0 +1,49 @@
+.profileContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profileIconGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    margin-left: 20px;
+    padding: 3px;
+}
+
+.profileIconGroup .bell, .profileIconGroup .gear {
+    cursor: pointer;
+}
+
+.profileIconGroup .bell:hover, .profileIconGroup .gear:hover {
+    color: rgb(40,40,40);
+}
+
+.profileIconGroup.flame {
+    height: 25px;
+    background: var(--dark-green);
+    box-shadow: inset 0px 0px 4px rgba(0,0,0,.7);
+}
+
+.profileIconGroup .flame {
+    color: #FFF130;
+    padding: 5px;
+}
+
+.profileIconGroup .flame:hover {
+    color: var(--light-amber);
+}
+
+.profilePoints {
+    padding: 5px;
+    font-size: 1.1em;
+    font-weight: 700;
+    
+    background: linear-gradient(0deg, var(--mid-amber), var(--light-amber));
+    color:transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}

@@ -14,7 +14,14 @@ export default class Footer extends Component {
       <div className="Footer">
         <div className="footerContainer">
           <div className="footerGroup">
-            <div>© 2018 Daniel Vinson</div>
+            <div className="footerItem">Footer Text Item</div>
+            <div className="footerItem">Footer Text Item</div>
+            <div className="footerItem">Footer Text Item</div>
+          </div>
+          <div className="footerGroup">
+            <div className="footerItem">Footer Text Item</div>
+            <div className="footerItem">Footer Text Item</div>
+            <div className="footerItem">© 2018 Daniel Vinson</div>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 /* Settings Menu */
 .settingsMenu {
     width: 350px;
+    background: linear-gradient(0deg, rgba(220,220,220,1), rgba(230,230,230,1));
 }
 
 .settingsMenuItemGroup {
@@ -13,4 +14,9 @@
 
 .settingsMenuItem {
     padding: 10px;
+    cursor: pointer;
+}
+
+.settingsMenuItem:hover {
+    background: linear-gradient(0deg, rgba(255,255,255,1), rgba(255,255,255,0.1));
 }

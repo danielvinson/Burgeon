@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { dispatch } from '@rematch/core'
 import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
 
 import DropDownMenu from '../../components/DropDownMenu.js';
 
@@ -15,12 +16,7 @@ class SettingsMenu extends Component {
   }
   
   handleLogOut(event) {
-    event.preventDefault();
-    
-    // redirect home
-    dispatch.user.logout().then(() => {
-      //dispatch.user.update();
-    })
+    dispatch.user.logout();
   }
 
   render() {
@@ -55,6 +51,10 @@ class SettingsMenu extends Component {
     )
   }
 }
+
+SettingsMenu.propTypes = {
+  visible: PropTypes.bool
+};
 
 const mapState = state => ({
   user: state.user

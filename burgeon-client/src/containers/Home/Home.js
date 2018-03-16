@@ -33,7 +33,7 @@ export default class Home extends Component {
   render() {
     
     return(
-        <div>
+        <div className="Home">
           <button onClick={this.handleAddPoints}>Add 5 Points</button>
           <button onClick={() => this.handleAddAlert('error')}>Add an Error Alert</button>
           <button onClick={() => this.handleAddAlert('warning')}>Add a Warning Alert</button>

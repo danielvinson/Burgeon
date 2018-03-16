@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { dispatch } from '@rematch/core'
+import { dispatch } from '@rematch/core';
+import { Link } from 'react-router-dom';
 
 import burgeonAPI from '../../api.js';
 
@@ -19,8 +20,14 @@ export default class Login extends Component {
     this.handleSubmitLogin = this.handleSubmitLogin.bind(this);
   }
 
-  validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+  validateEmail() {
+    return this.state.email.length > 0 && 
+           this.state.email.includes('@') &&
+           this.state.email.includes('.');
+  }
+  
+  validatePassword() {
+    return this.state.password.length > 5;
   }
 
   handleInputChange(event) {
@@ -44,31 +51,40 @@ export default class Login extends Component {
   }
 
   render() {
+    
+    const validEmail = this.validateEmail();
+    const validPassword = this.validatePassword();
+    
     return (
       <div className="Login">
         <div className="loginContainer">
+          <div className="contentTitle">Log In</div>
           <form className="loginForm" onSubmit={this.handleSubmitLogin}>
-            <div className="formGroup">
-              <label>Email</label>
+            <div className="formGroup loginFormGroup">
+              <label className="formLabel">Email</label>
               <input
                 autoFocus
                 name="email"
                 type="email"
+                placeholder="Email Address"
                 value={this.state.email}
                 onChange={this.handleInputChange}
+                required
               />
             </div>
-            <div className="formGroup">
-              <label>Password</label>
+            <div className="formGroup loginFormGroup">
+              <label className="formLabel">Password</label>
               <input
                 name="password"
                 type="password"
+                placeholder="Password"
                 value={this.state.password}
                 onChange={this.handleInputChange}
+                required
               />
             </div>
-            <div className="formGroup">
-              <label>Remember Me</label>
+            <div className="formGroupInline loginFormGroupInline">
+              <label className="formLabel">Remember Me?</label>
               <input
                 name="rememberMe"
                 type="checkbox"
@@ -76,14 +92,18 @@ export default class Login extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <div className="formGroup">
+            <div className="formGroupInline loginFormGroupInline">
               <button
                 type="submit"
+                className="loginButton"
               >
                 Login
               </button>
             </div>
           </form>
+          <div className="loginRegister">
+            Don't have an Account?  <Link to="/register">Join up</Link>.
+          </div>
         </div>
       </div>
     );

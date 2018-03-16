@@ -1,36 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,400i,700');
-
-.octicon {
-  display: inline-block;
-  vertical-align: text-top;
-  fill: currentColor;
-}
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
 
 :root
 {
-  /* Blue Forest + Fire Color Palette */
-  --ice-blue:     rgb(84, 171, 185);
-  --night-sky:    rgb(5, 21, 45);
-  --yellow-sun:   rgb(249, 220, 121);
-
-  /* Nature Color Palette */
+  /*
+  // Colors
+  */
+  /* Nature Colors */
+  --ice-blue:    rgb(84, 171, 185);
+  --night-sky:   rgb(5, 21, 45);
+  --yellow-sun:  rgb(249, 220, 121);
+  /* Material Design Colors */
   --light-green: #cfff95;
   --mid-green:   #9ccc65;
   --dark-green:  #6b9b37;
-
   --light-brown: #a98274;
   --mid-brown:   #795548;
   --dark-brown:  #4b2c20;
-
   --light-amber: #fffd61;
   --mid-amber:   #ffca28;
   --dark-amber:  #c79a00;
-  
+  /* Other Colors */
   --error-red:   #ac1900;
 
+  /*
+  // Global Vars
+  */
   --global-margin-left:   7%;
   --global-margin-right:  7%;
   
+  --default-font: 'Lato', sans-serif;
+  --header-font:  'Montserrat', sans-serif;
 }
 
 *, *:before, *:after {
@@ -47,11 +47,21 @@ body {
   padding: 0;
   height: 100%;
   
-  font-family: 'Lato', sans-serif;
+  color: var(--night-sky);
   
-  background: rgb(240,240,220) no-repeat center center fixed;
+  font-family: var(--default-font);
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+  font-variant-numeric: diagonal-fractions;
+  font-feature-settings: 'frac' 1;
+  font-variant-numeric: ordinal;
+  font-feature-settings: 'ordn' 1;
+  
+  background: linear-gradient(90deg, #d5d4da, #f8f8fa);
   background-size: cover;
 }
+
+/* Main container defaults... */
 
 #reactContainer {
   /* Make sure the container fits the screen, displays in columns */
@@ -63,4 +73,42 @@ body {
 .content {
   /* Make the content stretches to fit the page... */
   flex: 1 0 auto;
+  min-height: 85%;
+}
+
+
+.contentTitle {
+  font-family: var(--header-font);
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+/* Icon Base Styles  */ 
+
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
+/* Default Form Styles */
+
+input {
+  margin: 0;
+  padding: 8px;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,.1);
+  box-shadow: none;
+}
+
+input:focus {
+  border: 1px solid rgba(0,0,0,.2);
+}
+
+input:valid {
+  border: 1px solid rgba(30,200,30,1);
+}
+
+input:invalid {
+  border: 1px solid rgba(200,30,30,1);
 }

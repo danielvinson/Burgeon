@@ -2,9 +2,12 @@
     width: 100%;
     height: 45px;
     
-    background: var(--dark-green);
+    background: linear-gradient(0deg, rgba(213, 212, 218,0.4), rgba(248, 248, 250, 0.4));
     
     border-bottom: 3px solid rgba(255,255,255,0.1);
+    
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+    z-index: 5;
 }
 
 .headerContainer {
@@ -19,51 +22,31 @@
     margin-right: var(--global-margin-right);
 }
 
+.headerContainer .title {
+    height: 100%;
+    width: 175px;
+    
+    font-family: var(--header-font);
+    
+    background-image: url("/static/img/burgeon-plant-logo-full-transparent-mirror.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom 0% left 0%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .headerContainer .title a {
-    color: var(--light-amber);
+    color: var(--night-sky);
     text-decoration: none;
     font-size: 1.4em;
     font-weight: 400;
-    text-shadow: 1px 2px 1px rgba(0,0,0,.1);
+    text-shadow: 0px 1px 5px rgba(255,255,255,1);
 }
 
 .headerContainer .loggedOutMessage {
     font-size: 0.9em;
     font-weight: 400;
-}
-
-/* Profile Area (Icons, Menus) */
-.headerContainer .profileContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.headerContainer .profileIconGroup {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    
-    margin-left: 20px;
-    padding: 3px;
-}
-
-.profileIconGroup .bell, .profileIconGroup .gear {
-    cursor: pointer;
-}
-
-.profileIconGroup .flame {
-    color: #f70;
-}
-
-.headerContainer .profilePoints {
-    padding: 5px;
-    font-size: 1em;
-    font-weight: 700;
-    
-    background: linear-gradient(0deg, #f00, #ff0);
-    color:transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
 }
