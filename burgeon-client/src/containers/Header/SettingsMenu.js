@@ -3,6 +3,7 @@ import { dispatch } from '@rematch/core'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 
+import history from '../../index.js';
 import DropDownMenu from '../../components/DropDownMenu.js';
 
 import './SettingsMenu.css';
@@ -15,13 +16,14 @@ class SettingsMenu extends Component {
     this.handleLogOut = this.handleLogOut.bind(this);
   }
   
-  handleLogOut(event) {
-    dispatch.user.logout();
+  async handleLogOut(event) {
+    await dispatch.user.logout();
+    history.push('/');
   }
 
   render() {
     return(
-      <div>
+      <React.Fragment>
         {this.props.visible ? (
           <DropDownMenu 
             className="settingsMenu"
@@ -35,13 +37,10 @@ class SettingsMenu extends Component {
             </div>
             <div className="settingsMenuItemGroup">
               <div className="settingsMenuItem">
-                <div>Menu Item</div>
+                <div>Settings</div>
               </div>
               <div className="settingsMenuItem">
-                <div>Menu Item</div>
-              </div>
-              <div className="settingsMenuItem">
-                <div>Menu Item</div>
+                <div>View Your Profile</div>
               </div>
             </div>
             <div className="settingsMenuItemGroup">
@@ -51,7 +50,7 @@ class SettingsMenu extends Component {
             </div>
           </DropDownMenu>
         ) : null}
-      </div>
+      </React.Fragment>
     )
   }
 }

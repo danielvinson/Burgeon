@@ -1,16 +1,43 @@
-.DropDownMenu
-{
+.DropDownMenu {
     position: relative;
+    width: auto;
+    height: auto;
 }
 
-.dropDownMenuContainer
-{
+.dropDownMenuContainer {
     position: absolute;
-    top: 22px;
-    right: 0px;
+    top: 27px;
+    right: -24px;
     
-    border: 1px solid rgba(255,255,255,0.7);
+    border: 2px solid rgba(255,255,255,0.9);
     border-radius: 5px;
-    background: rgba(255,255,255,1);
     box-shadow: 1px 1px 3px rgba(0,0,0,.3);
+}
+
+.dropDownMenuContainer::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    width: 0px;
+    height: 0px;
+    
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid;
+    border-color: rgba(255,255,255,0.9) transparent;
+}
+
+.dropDownMenuContainer::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 24px;
+    width: 0px;
+    height: 0px;
+    
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-color: rgba(0,0,0,0.9) transparent;
 }

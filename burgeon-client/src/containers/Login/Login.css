@@ -54,3 +54,7 @@
     width: 100%;
     text-align: center;
 }
+
+.loginFormError {
+    color: #f00;
+}

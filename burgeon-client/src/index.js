@@ -18,6 +18,7 @@ const store = init({
 });
 
 const history = createHistory();
+export default history;
 
 render(
     <Provider store={store}>

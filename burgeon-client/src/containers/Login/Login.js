@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 import burgeonAPI from '../../api.js';
 
+import Icon from '../../components/Icons.js';
+import Button from '../../components/Button.js';
+
 import './Login.css';
 
 export default class Login extends Component {
@@ -14,6 +17,7 @@ export default class Login extends Component {
       email: '',
       password: '',
       rememberMe: false,
+      error: '',
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -40,18 +44,21 @@ export default class Login extends Component {
     });
   }
 
-  handleSubmitLogin(event) {
-    event.preventDefault();
-    
-    dispatch.user.login({
+  async handleSubmitLogin() {
+    const success = await dispatch.user.login({
       'email': this.state.email, 
       'password': this.state.password, 
       'rememberMe': this.state.rememberMe
     });
+    if (success){
+      this.props.history.push('/');
+    } else {
+       this.setState({ error: 'Invalid Username or Password'});
+    }
   }
 
   render() {
-    
+
     const validEmail = this.validateEmail();
     const validPassword = this.validatePassword();
     
@@ -59,7 +66,7 @@ export default class Login extends Component {
       <div className="Login">
         <div className="loginContainer">
           <div className="contentTitle">Log In</div>
-          <form className="loginForm" onSubmit={this.handleSubmitLogin}>
+          <form className="loginForm">
             <div className="formGroup loginFormGroup">
               <label className="formLabel">Email</label>
               <input
@@ -93,12 +100,21 @@ export default class Login extends Component {
               />
             </div>
             <div className="formGroupInline loginFormGroupInline">
-              <button
-                type="submit"
-                className="loginButton"
+              <Button
+                onClick={this.handleSubmitLogin}
+                width={150}
+                height={35}
+                background={"var(--mid-green)"}
+                color={"var(--night-sky)"}
+                progressBarEnable={true}
+                progressBarTimer={1000}
+                progressBarColor={"var(--dark-green)"}
               >
-                Login
-              </button>
+                Log In
+              </Button>
+            </div>
+            <div className="formGroupInline loginFormGroupInline">
+              <div className="loginFormError">{this.state.error}</div>
             </div>
           </form>
           <div className="loginRegister">

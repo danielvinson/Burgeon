@@ -12,25 +12,25 @@ export const user = {
       // this should be looping through keys, but I'm
       // changing this very regularily and don't want 
       // to break the UI with API changes.
-      state.loggedIn = true;
-      state.email = user.email;
-      state.points = user.points;
-      state.staff = user.staff;
-      state.user_id = user.user_id;
-      state.registered_on = user.registered_on;
-      return { ...state }
+      return {
+        ...state,
+        loggedIn: true,
+        email: user.email,
+        points: user.points,
+        staff: user.staff,
+        registered_on: user.registered_on
+      }
     },
     _logout(state) {
-      return { loggedIn: false }
+      return {
+        ...state, 
+        loggedIn: false
+      }
     },
-    _addPoints(state, points){
-      state.points += points;
-      return { ...state }
-    }
   },
   effects: {
     async update(payload, rootState) {
-      // updateUser() should be called with no arguments to
+      // update() should be called with no arguments to
       // refresh the current user and update the global state
       const response = await burgeonAPI.getUser();
       if (response.status == 'success'){
@@ -42,6 +42,9 @@ export const user = {
       if (response.status == 'success'){
           this._logout();
           this.update();
+          return true;
+      } else {
+        return false;
       }
     },
     async login(payload, rootState) {
@@ -52,12 +55,15 @@ export const user = {
       );
       if (response.status == 'success'){
           this.update();
+          return true;
+      } else {
+        return false;
       }
     },
     async addPoints(points, rootState) {
         const response = await burgeonAPI.addPoints(points);
         if (response.status == 'success'){
-            this._addPoints(points);
+            this.update();
         }
     }
   }
@@ -79,19 +85,24 @@ export const alerts = {
       if (!('id' in params)){
           params.id = shortid.generate();
       }
-      console.log(params);
+
       // unshift to add to the top of page
-      state.alerts.unshift({
-          id: params.id,
-          type: params.type,
-          message: params.message,
-      });
+      const newAlert = {
+        id: params.id,
+        type: params.type,
+        message: params.message
+      };
       
-      return { ...state }
+      return {
+        ...state,
+        alerts: [].concat([newAlert], state.alerts)
+      }
     },
     destroy(state, id) {
-      state.alerts = state.alerts.filter(alert => alert.id != id);
-      return { ...state }
+      return { 
+        ...state, 
+        alerts: state.alerts.filter(alert => alert.id != id)
+      }
     }
   }
 }

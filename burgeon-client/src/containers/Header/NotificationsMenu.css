@@ -1,7 +1,24 @@
 .notificationsMenu {
-    width: 200px;
+    width: 250px;
+    
+    background: rgba(240,240,242, 1);
 }
 
 .notificationsMenuItem {
     padding: 10px;
+    
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notificationsMenuItem:last-child {
+    border-bottom: none;
+}
+
+.notificationsMenu .x-icon {
+    color: #f00;    
 }

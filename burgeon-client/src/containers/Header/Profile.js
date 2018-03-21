@@ -8,7 +8,7 @@ import burgeonAPI from '../../api.js';
 import NotificationsMenu from './NotificationsMenu.js';
 import SettingsMenu from './SettingsMenu.js';
 
-import { Gear, Bell, Flame } from '../../components/Icons.js';
+import Icon from '../../components/Icons.js';
 
 import './Profile.css';
 
@@ -28,21 +28,13 @@ class Profile extends Component {
   
   handleIconClick(event) {
     const icon = event.currentTarget.className.split(' ')[1];
-    
-    let settingsMenuVisible = this.state.settingsMenuVisible;
-    let notificationsMenuVisible = this.state.notificationsMenuVisible;
-    
+
     if (icon == 'gear'){
-      settingsMenuVisible = !settingsMenuVisible;
+      this.handleSettingsVisibilityUpdate(!this.state.settingsMenuVisible);
     }
     if (icon == 'bell'){
-      notificationsMenuVisible = !notificationsMenuVisible;
+      this.handleNotificationsVisibilityUpdate(!this.state.notificationsMenuVisible);
     }
-    
-    this.setState({
-      settingsMenuVisible: settingsMenuVisible,
-      notificationsMenuVisible: notificationsMenuVisible,
-    });
   }
   
   handleSettingsVisibilityUpdate(visible) {
@@ -65,20 +57,20 @@ class Profile extends Component {
         {loggedIn ? (
           <div className="profileContainer loggedIn">
             <div className="profileIconGroup bell" onClick={this.handleIconClick}>
-              <Bell width={24} />
+              <Icon icon={'bell'} width={18} />
               <NotificationsMenu 
                 visible={this.state.notificationsMenuVisible} 
                 updateVisibility={this.handleNotificationsVisibilityUpdate} 
               />
             </div>
-            <div className="profileIconGroup flame">
+            {/*<div className="profileIconGroup flame">
               <div className="profilePoints">
                 {this.props.user.points}
               </div>
-              <Flame width={12} />
-            </div>
+              <Icon icon={'flame'} width={12} />
+            </div>*/}
             <div className="profileIconGroup gear" onClick={this.handleIconClick}>
-              <Gear width={24} />
+              <Icon icon='gear' width={22} />
               <SettingsMenu 
                 visible={this.state.settingsMenuVisible} 
                 updateVisibility={this.handleSettingsVisibilityUpdate} 
@@ -88,7 +80,9 @@ class Profile extends Component {
         ) : (
           /* LoggedOut */
           <div className="profileContainer loggedOut">
-            <div className="loggedOutMessage">You're not logged in!</div>
+            <div className="loggedOutMessage">
+              <Link to="/login">Log In</Link> or <Link to="/register">Register</Link>
+            </div>
           </div>
         )}
       </div>
@@ -100,4 +94,4 @@ const mapState = state => ({
   user: state.user
 });
 
-export default connect(mapState, null)(Profile);
+export default connect(mapState)(Profile);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { CSSTransitionGroup } from 'react-transition-group'
 
-import { Icon } from '../../components/Icons.js';
+import Icon from '../../components/Icons.js';
 
 import './Alerts.css';
 

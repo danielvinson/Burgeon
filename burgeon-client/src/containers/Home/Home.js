@@ -3,6 +3,9 @@ import { dispatch } from '@rematch/core'
 
 import burgeonAPI from '../../api.js';
 
+import Icon from '../../components/Icons.js';
+import Button from '../../components/Button.js';
+
 import './Home.css';
 
 export default class Home extends Component {
@@ -34,10 +37,12 @@ export default class Home extends Component {
     
     return(
         <div className="Home">
-          <button onClick={this.handleAddPoints}>Add 5 Points</button>
-          <button onClick={() => this.handleAddAlert('error')}>Add an Error Alert</button>
-          <button onClick={() => this.handleAddAlert('warning')}>Add a Warning Alert</button>
-          <button onClick={() => this.handleAddAlert('info')}>Add an Info Alert</button>
+          <div>
+            <button onClick={this.handleAddPoints}>Add 5 Points</button>
+            <button onClick={() => this.handleAddAlert('error')}>Add an Error Alert</button>
+            <button onClick={() => this.handleAddAlert('warning')}>Add a Warning Alert</button>
+            <button onClick={() => this.handleAddAlert('info')}>Add an Info Alert</button>
+          </div>
         </div>
     )
   }
