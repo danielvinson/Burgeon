@@ -103,3 +103,4 @@ ENV/
 # Burgeon
 *.db
 bundle.js
+.pytest_cache
