@@ -3,7 +3,7 @@ import os
 import unittest
 from flask import current_app
 
-from base import BurgeonTestCase
+from .base import BurgeonTestCase
 
 class TestTasksAPI(BurgeonTestCase):
     

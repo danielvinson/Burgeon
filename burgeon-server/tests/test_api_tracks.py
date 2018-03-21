@@ -4,7 +4,7 @@ import unittest
 import json
 from flask import current_app
 
-from base import BurgeonTestCase
+from .base import BurgeonTestCase
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from burgeon import db
