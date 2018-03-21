@@ -109,6 +109,17 @@ I will include instructions for this later.
 
 ## Running the tests
 
+### Server
+
+Run:
+
+```
+cd /burgeon/Burgeon/burgeon-server/
+pytest
+```
+
+### Client
+
 ## Built With
 
 __Backend__
