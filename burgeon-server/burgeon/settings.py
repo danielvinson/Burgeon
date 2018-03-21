@@ -27,6 +27,7 @@ class TestingConfig(BaseConfig):
     # Testing Configuration
     DEBUG = True
     TESTING = True
+    JSONIFY_PRETTYPRINT_REGULAR = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
 
 

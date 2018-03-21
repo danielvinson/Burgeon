@@ -21,12 +21,9 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False) # should be always 60 bytes, but I'm playing it safe
     registered_on = db.Column(db.DateTime, nullable=False)
-    
-    tracks = db.relationship('Track', backref='users', lazy=True)
-
+    tracks = db.relationship('Track', backref='user', lazy=True)
     # Point system might need to be more complicated in the future
     points = db.Column(db.Integer, nullable=False)
-    
     # Determine if the User is a Burgeon staff member to access Admin site
     staff = db.Column(db.Boolean, nullable=False, default=False)
 
@@ -42,6 +39,17 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User {self.email}>'.format(self=self)
     
+    def to_json(self):
+        # Shallow JSON representation
+        return {
+            'id': self.id,
+            'email': self.email,
+            'registered_on': self.registered_on,
+            'points': self.points,
+            'staff': self.staff,
+            'tracks': [track.id for track in self.tracks]
+        }
+    
     def add_points(self, points):
         self.points += points
 
@@ -55,11 +63,18 @@ class Organization(db.Model):
     users = db.relationship('User',
         secondary='user_org_relations',
         lazy='subquery',
-        backref=db.backref('users', lazy=True)
+        backref=db.backref('organization', lazy=True)
     )
     
     def __repr__(self):
         return '<Organization {self.name}>'.format(self=self)
+    
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'users': [user.id for user in self.users]
+        }
     
     def add_user(self, user):
         self.users.append(user)
@@ -76,14 +91,22 @@ class Track(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), unique=True, nullable=False)
-    
+    archived = db.Column(db.Boolean, default=False)
     # User is the only one who can edit this track
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    
     goals = db.relationship('Goal', backref='track', lazy=True)
 
     def __repr__(self):
         return '<Track {self.name}>'.format(self=self)
+    
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'achived': self.archived,
+            'user_id': self.user_id,
+            'goals': [goal.id for goal in self.goals]
+        }
 
 
 class Goal(db.Model):
@@ -96,6 +119,14 @@ class Goal(db.Model):
 
     def __repr__(self):
         return '<Goal {self.name}>'.format(self=self)
+    
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'track_id': self.track_id,
+            'tasks': [task.id for task in self.tasks]
+        }
 
 
 class Task(db.Model):
@@ -104,9 +135,16 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), unique=True, nullable=False)
     goal_id = db.Column(db.Integer, db.ForeignKey('goals.id'), nullable=False)
-    
     # We probably don't want to store notepad in text - this is a bit of a placeholder
-    notepad = db.Column(db.String(1024 * 100)) # Max in postgres is 1GB, Max in sqlite is 2,147,483,647
+    notepad = db.Column(db.String(1024 * 100), default='') # Max in postgres is 1GB, Max in sqlite is 2,147,483,647
 
     def __repr__(self):
         return '<Task {self.name}>'.format(self=self)
+    
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'notepad': self.notepad
+        }
+

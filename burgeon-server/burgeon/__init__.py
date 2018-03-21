@@ -52,8 +52,17 @@ from burgeon import cli
 from burgeon import views
 
 # Initialize the app blueprints for the API
-from burgeon.auth import auth_blueprint
+from burgeon.api.auth import auth_blueprint
 app.register_blueprint(auth_blueprint)
 
-from burgeon.social import social_blueprint
+from burgeon.api.social import social_blueprint
 app.register_blueprint(social_blueprint)
+
+from burgeon.api.tracks import tracks_blueprint
+app.register_blueprint(tracks_blueprint)
+
+#from burgeon.api.goals import goals_blueprint
+#app.register_blueprint(goals_blueprint)
+
+#from burgeon.api.tasks import tasks_blueprint
+#app.register_blueprint(tasks_blueprint)

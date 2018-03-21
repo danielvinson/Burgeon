@@ -1,7 +1,7 @@
 import logging
 from flask import Blueprint
 
-from burgeon.social.points_api import AddPointsAPI
+from burgeon.api.social.points_api import AddPointsAPI
 
 log = logging.getLogger('burgeon.social')
 

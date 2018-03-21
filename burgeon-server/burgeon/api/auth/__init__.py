@@ -1,10 +1,10 @@
 import logging
 from flask import Blueprint
 
-from burgeon.auth.registration_api import RegistrationAPI
-from burgeon.auth.login_api import LoginAPI
-from burgeon.auth.logout_api import LogoutAPI
-from burgeon.auth.user_api import UserAPI
+from burgeon.api.auth.registration_api import RegistrationAPI
+from burgeon.api.auth.login_api import LoginAPI
+from burgeon.api.auth.logout_api import LogoutAPI
+from burgeon.api.auth.user_api import UserAPI
 
 log = logging.getLogger('burgeon.auth')
 
