@@ -3,7 +3,10 @@ import os
 import unittest
 from flask import current_app
 
-from .base import BurgeonTestCase
+try:
+    from .base import BurgeonTestCase
+except:
+    from base import BurgeonTestCase
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from burgeon import bcrypt

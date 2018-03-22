@@ -4,7 +4,10 @@ import unittest
 import json
 from flask import current_app
 
-from .base import BurgeonTestCase
+try:
+    from .base import BurgeonTestCase
+except:
+    from base import BurgeonTestCase
 
 class TestAuthAPI(BurgeonTestCase):
     
