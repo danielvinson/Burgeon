@@ -19,9 +19,7 @@ class UserAPI(MethodView):
                 'data': {
                     'user_id': user.id,
                     'email': user.email,
-                    'points': user.points,
                     'staff': user.staff,
-                    'registered_on': user.registered_on
                 }
             }
             return make_response(jsonify(responseObject), 200)

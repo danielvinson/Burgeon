@@ -5,9 +5,9 @@ from flask import make_response, jsonify
 from flask.views import MethodView
 from flask_login import current_user
 
-log = logging.getLogger('burgeon.api.user.get_user')
+log = logging.getLogger('burgeon.api.user.get_user_settings')
 
-class GetUserAPI(MethodView):
+class GetUserSettingsAPI(MethodView):
     """
     User Resource
     """

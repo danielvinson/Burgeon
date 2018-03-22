@@ -10,11 +10,11 @@ from burgeon.models import User
 
 log = logging.getLogger('burgeon.track.update_user_settings_api')
 
-class UpdateUserAPI(MethodView):
+class UpdateUserSettingsAPI(MethodView):
     """
     Update User
     """
-    def put(self, user_id):
+    def put(self):
         put_data = request.get_json()
         user = current_user
         if user and not user.is_anonymous:
@@ -27,11 +27,11 @@ class UpdateUserAPI(MethodView):
                     user.staff = True if put_data.get('staff') in ['True', 'true'] else False
                 if 'points' in put_data.keys():
                     user.points = put_data.get('points')
-                if 'first_name' in put_data.keys();
+                if 'first_name' in put_data.keys():
                     user.first_name = put_data.get('first_name')
-                if 'last_name' in put_data.keys();
+                if 'last_name' in put_data.keys():
                     user.last_name = put_data.get('last_name')
-                if 'username' in put_data.keys();
+                if 'username' in put_data.keys():
                     user.username = put_data.get('username')
                 db.session.add(user)
                 db.session.commit()

@@ -10,6 +10,6 @@ from burgeon import app, db
 @app.route('/')
 @app.route('/login')
 @app.route('/register')
-@app.route('/user/<username>')
+@app.route('/settings')
 def route_to_react():
     return render_template('index.html')

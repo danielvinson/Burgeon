@@ -55,6 +55,9 @@ from burgeon import views
 from burgeon.api.auth import auth_blueprint
 app.register_blueprint(auth_blueprint)
 
+from burgeon.api.user import user_bluepint
+app.register_blueprint(user_bluepint)
+
 from burgeon.api.social import social_blueprint
 app.register_blueprint(social_blueprint)
 
