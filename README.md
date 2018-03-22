@@ -8,7 +8,7 @@ Web App to track career growth, skills development, and learning over long time 
 
 The inspiration of this project so far is that I've been wanting to use something more powerful than a simple to-do list for tracking professional development.  This applies to far more than just learning skills - I want to be able to set up a group of things to do for promotion to Senior Engineer, like "Lead 3 Projects" or "Design a New Microservice Architecture".  There are tons of really detailed resources out there which provide a great set of learning resources for a specific skill, but it is often very hard to both use these (often forking a GitHub repo to keep track) and hard to find them, especially when they are all in different places.
 
-## Design
+## Design Overview
 
 A *Track* is a set of goals.  Each *Track* will have an expected completion time (adjustable, maybe slow-med-fast-custom).  Each track will have an associated reward, which initially will be points, but can turn into something we verify and provide real, physical rewards for.
 
@@ -16,15 +16,57 @@ Each *Goal* can be anything that is achievable.  For example, in a "Learn Python
 
 Each *Task* is a single, time-trackable action which is part of a larger goal.  This might have a time estimate, but it shouldn't be required.  Each task has a *Notepad* which is basically a text document which you can use to take notes.  This can be a simple text editor, with the only really important features being lists with checkboxes, embedding links, and maybe being able to do block quotes.  I don't necesarily want this to just be a simple Markdown editor since we want this to be super-accessible to non-developers.
 
+## Frontend Views/Design
+
+* Header/Menu with 
+* Home page which shows 
+* View which 
+
+
 ## MVP features
 
-* [ ] *User* registration, login/logout, Profile page.
-* [ ] *Track*s.  Create/Archive/Delete.
-* [ ] *Goal*s.  Create/Delete.
-* [ ] *Task*s.  Create/Complete/Edit/Update Notes/Delete.
-* [ ] *Notepad*s.  Edit.
+__Backend__
+
+* [x] *User* Model
+  * [x] Login
+  * [x] Logout
+  * [x] Registration
+  * [ ] Get Profile
+  * [ ] Update Profile
+  * [ ] Get Settings
+  * [ ] Update Settings
+* [x] *Track* Model
+  * [x] Create
+  * [x] Update
+  * [x] Archive
+  * [x] Delete
+* [x] *Goal* Model
+  * [x] Create
+  * [x] Update
+  * [x] Delete
+* [x] *Task* Model
+  * [x] Create
+  * [x] Complete
+  * [x] Update Notes
+  * [x] Delete
+
+__Frontend__
+
+* [ ] Home - progress charts, list of tracks, create track.
+* [x] Login
+* [x] Logout
+* [x] Registration
+* [ ] User Public Profile
+* [ ] User Settings
+* [x] View list of tracks
+* [ ] Track detail (list of Goals)
+* [ ] Task detail (view Notepad)
+
+__Other__
+
 * [ ] Some amount of curated goal tracks for different specialties, with tips for each step (similar to the many "Learn Machine Learning" or "Google Interview Prep" repos).
-* [ ] Home view - charts with progress (points or tasks) over time, list of current *Track*s, create/find new *Track*.  Suggested tracks.
+* [ ] Marketing website
+
 
 ## Release features
 
@@ -128,7 +170,8 @@ __Backend__
 * [Flask-SQLAlchemy]() - Flask+SQLAlchemy integration
 * [Bcrypt]() - Password hashing library
 * [Flask-Bcrypt]() - Flask Bcrypt integration
-* [SQLite]() Database (will be updated to Postgres for production)
+* [Flask-Login]() - Flask login/session handler
+* [SQLite]() Database (will probably be updated to Postgres for production)
 
 
 __Frontend__
