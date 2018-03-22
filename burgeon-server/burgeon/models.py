@@ -113,7 +113,7 @@ class Track(db.Model):
             'name': self.name,
             'achived': self.archived,
             'user_id': self.user_id,
-            'goals': [goal.id for goal in self.goals]
+            'goals': [goal.to_json() for goal in self.goals]
         }
 
 
@@ -133,7 +133,7 @@ class Goal(db.Model):
             'id': self.id,
             'name': self.name,
             'track_id': self.track_id,
-            'tasks': [task.id for task in self.tasks]
+            'tasks': [task.to_json() for task in self.tasks]
         }
 
 
