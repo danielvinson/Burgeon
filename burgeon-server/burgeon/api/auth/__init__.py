@@ -6,7 +6,7 @@ from burgeon.api.auth.login_api import LoginAPI
 from burgeon.api.auth.logout_api import LogoutAPI
 from burgeon.api.auth.user_api import UserAPI
 
-log = logging.getLogger('burgeon.auth')
+log = logging.getLogger('burgeon.api.auth')
 
 # Loader for flask-login
 from burgeon import login

@@ -7,7 +7,7 @@ from burgeon.api.goals.delete_goal_api import DeleteGoalAPI
 from burgeon.api.goals.get_goal_api import GetGoalAPI
 from burgeon.api.goals.get_goals_api import GetGoalsAPI
 
-log = logging.getLogger('burgeon.goals')
+log = logging.getLogger('burgeon.api.goals')
 
 goals_blueprint = Blueprint('goals', __name__)
 

@@ -22,7 +22,7 @@ class Tracks extends Component {
   }
   
   componentWillMount() {
-    this.props.reloadTracks();   
+    this.props.reloadTracks();
   }
   
   handleTrackNameInput(event) {

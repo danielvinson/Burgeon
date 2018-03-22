@@ -17,15 +17,23 @@ user_org_relations = db.Table('user_org_relations',
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
+    # Internal
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False) # should be always 60 bytes, but I'm playing it safe
-    registered_on = db.Column(db.DateTime, nullable=False)
-    tracks = db.relationship('Track', backref='user', lazy=True)
-    # Point system might need to be more complicated in the future
-    points = db.Column(db.Integer, nullable=False)
     # Determine if the User is a Burgeon staff member to access Admin site
     staff = db.Column(db.Boolean, nullable=False, default=False)
+    
+    # Private
+    tracks = db.relationship('Track', backref='user', lazy=True)
+    
+    # Public
+    username = db.Column(db.String(255))
+    first_name = db.Column(db.String(64))
+    last_name = db.Column(db.String(64))
+    profile_picture = db.Column(db.String(255)) # Should be link to S3?
+    points = db.Column(db.Integer, nullable=False)
+    registered_on = db.Column(db.DateTime, nullable=False)
 
     def __init__(self, **kwargs):
         if not 'password' in kwargs:
