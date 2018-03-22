@@ -23,9 +23,9 @@ class UpdateTaskAPI(MethodView):
                     task.name = put_data['name']
                 if 'complete' in put_data.keys():
                     if put_data['complete'] in ['True', 'true', '1']:
-                        track.complete = True
+                        task.complete = True
                     else:
-                        track.complete = False
+                        task.complete = False
                 db.session.commit()
                 responseObject = {
                     'status': 'success',

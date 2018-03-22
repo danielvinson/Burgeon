@@ -15,5 +15,6 @@ def route_to_react():
     return render_template('index.html')
 
 @app.route('/track/<int:id>')
+@app.route('/goal/<int:id>')
 def route_to_react_with_id(id):
     return render_template('index.html')

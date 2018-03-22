@@ -1,4 +1,4 @@
-.TrackDetail {
+.GoalDetail {
     margin-left: var(--global-margin-left);
     margin-right: var(--global-margin-right);
     margin-top: 10px;
@@ -6,7 +6,7 @@
     padding: 15px;
 }
 
-.goalContainer {
+.taskContainer {
     margin: 15px;
     padding: 3px;
     border: 2px solid rgba(0,0,0,.2);
@@ -24,12 +24,12 @@
     justify-content: space-between;
 }
 
-.goalLink {
+.taskLink {
     text-decoration: none;
     color: #000;
 }
 
-.goalInfo, .goalCompletion {
+.taskInfo, .taskCompletion {
     display: flex;
     flex-direction: column;
     align-items: center;

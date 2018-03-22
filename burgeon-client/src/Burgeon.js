@@ -12,6 +12,7 @@ import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
 import UserSettings from './containers/UserSettings/UserSettings';
 import TrackDetail from './containers/TrackDetail/TrackDetail';
+import GoalDetail from './containers/GoalDetail/GoalDetail';
 
 export default class Burgeon extends Component {
   constructor(props) {
@@ -36,6 +37,7 @@ export default class Burgeon extends Component {
           <Route path="/register" component={Register} />
           <Route path="/settings" component={UserSettings} />
           <Route path="/track/:id" component={TrackDetail} />
+          <Route path="/goal/:id" component={GoalDetail} />
         </div>
         <Footer />
       </React.Fragment>

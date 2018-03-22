@@ -16,6 +16,9 @@ class TrackDetail extends Component {
       trackId: null,
       goalNameInput: '',
     };
+    
+    this.handleAddGoal = this.handleAddGoal.bind(this);
+    this.handleGoalNameInput = this.handleGoalNameInput.bind(this);
   }
 
   componentWillMount() {
@@ -38,7 +41,11 @@ class TrackDetail extends Component {
     this.props.createGoal({
       name: goalName,
       track_id: this.state.trackId
+    }).then(() => {
+      this.props.reloadTrack({'track_id': this.state.trackId});
+      this.setState({ goalNameInput: '' });
     });
+    
   }
 
   render() {
@@ -66,7 +73,7 @@ class TrackDetail extends Component {
         }
         
         return (
-          <Link to={"/goal/" + goal.id}>
+          <Link to={"/goal/" + goal.id} className="goalLink">
             <div 
               className="goalContainer" 
               key={goal.id}
