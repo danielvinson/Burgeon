@@ -83,7 +83,7 @@ export const user = {
   },
   effects: {
     async refresh(payload, rootState) {
-      // update() should be called with no arguments to
+      // refresh() should be called with no arguments to
       // refresh the current user and update the global state
       const response = await burgeonAPI.getUser();
       if (response.status == 'success'){
@@ -140,16 +140,12 @@ export const tracks = {
   },
   effects: {
     async reloadTrack(payload, rootState) {
-      // update() should be called with no arguments to
-      // refresh the current user and update the global state
       const response = await burgeonAPI.getTrack(payload.track_id);
       if (response.status == 'success'){
         this._update(response.data);
       }
     },
     async reloadTracks(payload, rootState) {
-      // update() should be called with no arguments to
-      // refresh the current user and update the global state
       const response = await burgeonAPI.getTracks();
       if (response.status == 'success'){
         for (let track in response.data){
@@ -158,28 +154,113 @@ export const tracks = {
       }
     },
     async createTrack(payload, rootState) {
-      // update() should be called with no arguments to
-      // refresh the current user and update the global state
-      console.log(payload);
       const response = await burgeonAPI.createTrack(payload);
       if (response.status == 'success'){
         this.reloadTracks();
       }
     },
     async deleteTrack(payload, rootState) {
-      // update() should be called with no arguments to
-      // refresh the current user and update the global state
       const response = await burgeonAPI.deleteTrack(payload.track_id);
       if (response.status == 'success'){
         this.reloadTracks();
       }
     },
     async updateTrack(payload, rootState) {
-      // update() should be called with no arguments to
-      // refresh the current user and update the global state
       const response = await burgeonAPI.updateTrack(payload.track_id, payload);
       if (response.status == 'success'){
-        this.reloadTracks();
+        this.reloadTrack(payload.track_id);
+      }
+    },
+  },
+}
+
+export const goals = {
+  state: {},
+  reducers: {
+    _update(state, goal_data) {
+      return {
+        ...state,
+        [goal_data.id]: goal_data
+      }
+    }
+  },
+  effects: {
+    async reloadGoal(payload, rootState) {
+      const response = await burgeonAPI.getGoal(payload.goal_id);
+      if (response.status == 'success'){
+        this._update(response.data);
+      }
+    },
+    async reloadGoals(payload, rootState) {
+      const response = await burgeonAPI.getGoals();
+      if (response.status == 'success'){
+        for (let goal in response.data){
+          this._update(response.data[goal]);
+        }
+      }
+    },
+    async createGoal(payload, rootState) {
+      const response = await burgeonAPI.createGoal(payload);
+      if (response.status == 'success'){
+        this.reloadGoals();
+      }
+    },
+    async deleteGoal(payload, rootState) {
+      const response = await burgeonAPI.deleteGoal(payload.goal_id);
+      if (response.status == 'success'){
+        this.reloadGoals();
+      }
+    },
+    async updateGoal(payload, rootState) {
+      const response = await burgeonAPI.updateGoal(payload.goal_id, payload);
+      if (response.status == 'success'){
+        this.reloadGoal(payload.goal_id);
+      }
+    },
+  },
+}
+
+export const tasks = {
+  state: {},
+  reducers: {
+    _update(state, task_data) {
+      return {
+        ...state,
+        [task_data.id]: task_data
+      }
+    }
+  },
+  effects: {
+    async reloadTask(payload, rootState) {
+      const response = await burgeonAPI.getTask(payload.task_id);
+      if (response.status == 'success'){
+        this._update(response.data);
+      }
+    },
+    async reloadTasks(payload, rootState) {
+      const response = await burgeonAPI.getTasks();
+      if (response.status == 'success'){
+        for (let task in response.data){
+          this._update(response.data[task]);
+        }
+      }
+    },
+    async createTask(payload, rootState) {
+      const response = await burgeonAPI.createTask(payload);
+      if (response.status == 'success'){
+        this.reloadTasks();
+      }
+    },
+    async deleteTask(payload, rootState) {
+      const response = await burgeonAPI.deleteTask(payload.task_id);
+      if (response.status == 'success'){
+        this.reloadTasks();
+      }
+    },
+    async updateTask(payload, rootState) {
+      const response = await burgeonAPI.updateTask(payload.task_id, payload);
+      if (response.status == 'success'){
+        this.reloadTask(payload.goal_id);
       }
     },
   },
