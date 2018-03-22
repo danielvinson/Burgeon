@@ -189,6 +189,40 @@ let burgeonAPI = {
             this._delete('/goals/' + goal_id).then((response) => { resolve(response) });
         })
     },
+
+    /* Tasks
+        API for interaction with Tasks
+    */
+    
+    getTasks() {
+        return new Promise((resolve, reject) => {
+            this._get('/tasks').then((response) => { resolve(response) });
+        })
+    },
+    
+    getTask(task_id) {
+        return new Promise((resolve, reject) => {
+            this._get('/tasks/' + task_id).then((response) => { resolve(response) });
+        })
+    },
+    
+    createTask(data) {
+        return new Promise((resolve, reject) => {
+            this._post('/tasks', data).then((response) => { resolve(response) });
+        })
+    },
+    
+    updateTask(task_id, data) {
+        return new Promise((resolve, reject) => {
+            this._put('/tasks/' + task_id, data).then((response) => { resolve(response) });
+        })
+    },
+    
+    deleteTask(task_id) {
+        return new Promise((resolve, reject) => {
+            this._delete('/tasks/' + task_id).then((response) => { resolve(response) });
+        })
+    },
 }
 
 export default burgeonAPI;
