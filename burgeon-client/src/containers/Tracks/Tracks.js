@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import burgeonAPI from '../../api.js';
 
@@ -41,16 +42,59 @@ class Tracks extends Component {
 
     const trackElements = Object.keys(this.props.tracks).map((key) => {
         const track = this.props.tracks[key];
+        
+        // Calculate track/goal completion...
+        let numGoals = 0;
+        let numGoalsComplete = 0;
+        let numTasks = 0;
+        let numTasksComplete = 0;
+        let trackCompletionPercent = 0;
+        
+        for (let goal in track['goals']){
+          const goal = track['goals'][goal];
+          numGoals += 1;
+          let goalComplete = true;
+          if (goal['tasks'].length == 0){
+            goalComplete = false;
+          }
+          for (let task in goal['tasks']){
+            const task = goal['tasks'][task];
+            numTasks += 1;
+            if (task['complete'] === true){
+              numTasksComplete += 1;
+            } else {
+              goalComplete = false;
+            }
+          }
+          if (goalComplete){
+            numGoalsComplete += 1;
+          }
+        }
+        
+        if (numGoals != 0){
+          trackCompletionPercent = (numGoalsComplete / numGoals) * 100;
+        }
+        
         return (
-            <div className="trackContainer" key={track.id}>
-                <div className="trackInfo">
-                    <span>Name: {track.name}</span>
-                </div>
-                <div className="trackCompletion">
-                    <span>100%</span>
-                    <span>8/8</span>
-                </div>
-            </div>
+          <div key={track.id}>
+            <Link to={"/track/" + track.id} className="trackLink">
+              <div 
+                className="trackContainer" 
+                style={{
+                  'backgroundSize': `${trackCompletionPercent}% 100%`
+                }}
+              >
+                  <div className="trackInfo">
+                      <span>{track.name}</span>
+                  </div>
+                  <div className="trackCompletion">
+                      <span>{trackCompletionPercent}%</span>
+                      <span>Goals: {numGoalsComplete}/{numGoals}</span>
+                      <span>Tasks: {numTasksComplete}/{numTasks}</span>
+                  </div>
+              </div>
+            </Link>
+          </div>
         )
     });
     

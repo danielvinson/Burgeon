@@ -1,14 +1,24 @@
 .trackContainer {
-    background: white;
     margin: 15px;
     padding: 3px;
     border: 2px solid rgba(0,0,0,.2);
     border-radius: 5px;
     
+    background: #fff;
+    background-image: linear-gradient(0deg, var(--mid-green), var(--mid-green));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 0% 0%;
+    
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+}
+
+.trackLink {
+    text-decoration: none;
+    color: #000;
 }
 
 .trackInfo, .trackCompletion {
