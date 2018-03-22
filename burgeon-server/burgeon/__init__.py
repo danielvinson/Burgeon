@@ -61,8 +61,8 @@ app.register_blueprint(social_blueprint)
 from burgeon.api.tracks import tracks_blueprint
 app.register_blueprint(tracks_blueprint)
 
-#from burgeon.api.goals import goals_blueprint
-#app.register_blueprint(goals_blueprint)
+from burgeon.api.goals import goals_blueprint
+app.register_blueprint(goals_blueprint)
 
-#from burgeon.api.tasks import tasks_blueprint
-#app.register_blueprint(tasks_blueprint)
+from burgeon.api.tasks import tasks_blueprint
+app.register_blueprint(tasks_blueprint)

@@ -11,8 +11,5 @@ from burgeon import app, db
 @app.route('/login')
 @app.route('/register')
 @app.route('/user/<username>')
-@app.route('/track/<track_id>')
-@app.route('/track/<track_id>/<goal_id>')
-@app.route('/track/<track_id>/<goal_id>/<task_id>')
 def route_to_react():
     return render_template('index.html')

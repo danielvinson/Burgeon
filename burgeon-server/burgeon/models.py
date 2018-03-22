@@ -135,6 +135,7 @@ class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), unique=True, nullable=False)
     goal_id = db.Column(db.Integer, db.ForeignKey('goals.id'), nullable=False)
+    complete = db.Column(db.Boolean, default=False)
     # We probably don't want to store notepad in text - this is a bit of a placeholder
     notepad = db.Column(db.String(1024 * 100), default='') # Max in postgres is 1GB, Max in sqlite is 2,147,483,647
 
@@ -145,6 +146,7 @@ class Task(db.Model):
         return {
             'id': self.id,
             'name': self.name,
+            'complete': self.complete,
             'notepad': self.notepad
         }
 
