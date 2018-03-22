@@ -16,7 +16,7 @@ class CreateGoalAPI(MethodView):
     """
     def post(self):
         post_data = request.get_json()
-        track = Track.query.get(id=post_data.get('track_id'))
+        track = Track.query.get(post_data.get('track_id'))
         if track:
             try:
                 goal = Goal(name=post_data.get('name'), track_id=track.id)
@@ -26,7 +26,7 @@ class CreateGoalAPI(MethodView):
                     'status': 'success',
                     'message': 'Goal successfully added'
                 }
-                return make_response(jsonify(responseObject), 200)
+                return make_response(jsonify(responseObject), 201)
             except Exception as e:
                 log.error('Add Goal failed. Error: {}.  Params: {}'.format(e, post_data))
                 responseObject = {

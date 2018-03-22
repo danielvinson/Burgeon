@@ -33,7 +33,8 @@ class LoginAPI(MethodView):
                 }
                 return make_response(jsonify(responseObject)), 401
             else:
-                login_user(user)
+                remember = True if post_data.get('rememberMe') in ['true', 'True'] else False
+                login_user(user, remember=remember)
                 responseObject = {
                     'status': 'success',
                     'message': 'Successfully logged in.'

@@ -49,5 +49,5 @@ goals_blueprint.add_url_rule(
 goals_blueprint.add_url_rule(
     '/goals/<int:goal_id>',
     view_func=delete_goal_api_view,
-    methods=['POST']
+    methods=['DELETE']
 )

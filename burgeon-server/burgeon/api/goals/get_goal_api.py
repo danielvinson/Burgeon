@@ -16,11 +16,11 @@ class GetGoalAPI(MethodView):
     """
     def get(self, goal_id):
         try:
-            goal = Goal.query(id=goal_id)
+            goal = Goal.query.get(goal_id)
             if goal:
                 responseObject = {
                     'status': 'success',
-                    'data': goal
+                    'data': goal.to_json()
                 }
                 return make_response(jsonify(responseObject), 200)
             else:

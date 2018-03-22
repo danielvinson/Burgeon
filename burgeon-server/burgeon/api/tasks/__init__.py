@@ -49,5 +49,5 @@ tasks_blueprint.add_url_rule(
 tasks_blueprint.add_url_rule(
     '/tasks/<int:task_id>',
     view_func=delete_tasks_api_view,
-    methods=['POST']
+    methods=['DELETE']
 )

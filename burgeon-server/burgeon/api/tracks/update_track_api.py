@@ -15,14 +15,14 @@ class UpdateTrackAPI(MethodView):
     Update Track
     """
     def put(self, track_id):
-        post_data = request.get_json()
+        put_data = request.get_json()
         track = Track.query.get(track_id)
         if track:
             try:
-                if 'name' in post_data.keys():
-                    track.name = post_data['name']
-                if 'archived' in post_data.keys():
-                    if post_data['archived'] in ['True', 'true', '1']:
+                if 'name' in put_data.keys():
+                    track.name = put_data['name']
+                if 'archived' in put_data.keys():
+                    if put_data['archived'] in ['True', 'true', '1']:
                         track.archived = True
                     else:
                         track.archived = False
@@ -33,7 +33,7 @@ class UpdateTrackAPI(MethodView):
                 }
                 return make_response(jsonify(responseObject), 200)
             except Exception as e:
-                log.error('Update Track failed. Error: {}.  Params: {}'.format(e, post_data))
+                log.error('Update Track failed. Error: {}.  Params: {}'.format(e, put_data))
                 responseObject = {
                     'status': 'fail',
                     'message': 'Some error occurred. Please try again.'

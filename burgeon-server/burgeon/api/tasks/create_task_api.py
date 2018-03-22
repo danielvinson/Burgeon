@@ -6,9 +6,9 @@ from flask.views import MethodView
 from flask_login import current_user
 
 from burgeon import db
-from burgeon.models import Track, Goal, Task
+from burgeon.models import Goal, Task
 
-log = logging.getLogger('burgeon.track.create_goal_api')
+log = logging.getLogger('burgeon.api.task.create_task_api')
 
 class CreateTaskAPI(MethodView):
     """
@@ -16,19 +16,19 @@ class CreateTaskAPI(MethodView):
     """
     def post(self):
         post_data = request.get_json()
-        track = Track.query.get(id=post_data.get('track_id'))
-        if track:
+        goal = Goal.query.get(post_data.get('goal_id'))
+        if goal:
             try:
-                goal = Goal(name=post_data.get('name'), track_id=track.id)
-                db.session.add(goal)
+                task = Task(name=post_data.get('name'), goal_id=goal.id)
+                db.session.add(task)
                 db.session.commit()
                 responseObject = {
                     'status': 'success',
-                    'message': 'Goal successfully added'
+                    'message': 'Task successfully added'
                 }
-                return make_response(jsonify(responseObject), 200)
+                return make_response(jsonify(responseObject), 201)
             except Exception as e:
-                log.error('Add Goal failed. Error: {}.  Params: {}'.format(e, post_data))
+                log.error('Add Task failed. Error: {}.  Params: {}'.format(e, post_data))
                 responseObject = {
                     'status': 'fail',
                     'message': 'Some error occurred. Please try again.'
@@ -37,6 +37,6 @@ class CreateTaskAPI(MethodView):
         else:
             responseObject = {
                 'status': 'fail',
-                'message': 'Track not found.',
+                'message': 'Goal not found.',
             }
             return make_response(jsonify(responseObject), 404)

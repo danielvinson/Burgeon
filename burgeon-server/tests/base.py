@@ -11,8 +11,29 @@ class BurgeonTestCase(TestCase):
         app.config.from_object('burgeon.settings.TestingConfig')
         return app.test_client()
         
-    def create_test_data(self):
-        pass
+    def create_test_user(self, email, password):
+        user = User(email=email, password=password)
+        self.db.session.add(user)
+        self.db.session.commit()
+        return user.id
+        
+    def create_test_track(self, name, user_id):
+        track = Track(name=name, user_id=user_id)
+        self.db.session.add(track)
+        self.db.session.commit()
+        return track.id
+
+    def create_test_goal(self, name, track_id):
+        goal = Goal(name=name, track_id=track_id)
+        self.db.session.add(goal)
+        self.db.session.commit()
+        return goal.id
+
+    def create_test_task(self, name, goal_id):
+        task = Task(name=name, goal_id=goal_id)
+        self.db.session.add(task)
+        self.db.session.commit()
+        return task.id
 
     def setUp(self):
         self.app = self.create_app()

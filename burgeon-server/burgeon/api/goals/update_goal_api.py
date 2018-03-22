@@ -19,10 +19,10 @@ class UpdateGoalAPI(MethodView):
         goal = Goal.query.get(goal_id)
         if goal:
             try:
-                for key, value in put_data.items():
-                    if key in goal and key is not 'id':
-                        goal[key] = value
-                db.session.commit()
+                if 'name' in put_data.keys():
+                    goal.name = put_data['name']
+                    db.session.add(goal)
+                    db.session.commit()
                 responseObject = {
                     'status': 'success',
                     'message': 'Goal successfully updated.'

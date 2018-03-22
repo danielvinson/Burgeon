@@ -18,7 +18,7 @@ class GetGoalsAPI(MethodView):
             goals = Goal.query.all()
             responseObject = {
                 'status': 'success',
-                'data': goals
+                'data': [goal.to_json() for goal in goals]
             }
             return make_response(jsonify(responseObject), 200)
         except Exception as e:
