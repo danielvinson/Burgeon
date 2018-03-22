@@ -2,9 +2,52 @@ import shortid from 'shortid';
 
 import burgeonAPI from './api.js';
 
+export const alerts = {
+  state: {
+    'alerts': []
+  },
+  reducers: {
+    create(state, params) {
+      /*
+        params:
+            <id>(optional)
+            <type>(required) error, warning, info
+            <message>(required)
+      */
+      // if id is not specified, generate one
+      if (!('id' in params)){
+          params.id = shortid.generate();
+      }
+
+      // unshift to add to the top of page
+      const newAlert = {
+        id: params.id,
+        type: params.type,
+        message: params.message
+      };
+      
+      return {
+        ...state,
+        alerts: [].concat([newAlert], state.alerts)
+      }
+    },
+    destroy(state, id) {
+      return { 
+        ...state, 
+        alerts: state.alerts.filter(alert => alert.id != id)
+      }
+    }
+  }
+}
+
 export const user = {
   state: {
-    'loggedIn': false
+    'loggedIn': false,
+    'user_id': null,
+    'email': '',
+    'points': 0,
+    'staff': false,
+    'registered_on': null,
   },
   reducers: {
     _update(state, user) {
@@ -15,6 +58,7 @@ export const user = {
       return {
         ...state,
         loggedIn: true,
+        user_id: user.user_id,
         email: user.email,
         points: user.points,
         staff: user.staff,
@@ -61,48 +105,67 @@ export const user = {
       }
     },
     async addPoints(points, rootState) {
-        const response = await burgeonAPI.addPoints(points);
-        if (response.status == 'success'){
-            this.update();
-        }
+      const response = await burgeonAPI.addPoints(points);
+      if (response.status == 'success'){
+          this.update();
+      }
     }
   }
 }
 
-export const alerts = {
-  state: {
-    'alerts': []
-  },
+export const tracks = {
+  state: {},
   reducers: {
-    create(state, params) {
-      /*
-        params:
-            <id>(optional)
-            <type>(required) error, warning, info
-            <message>(required)
-      */
-      // if id is not specified, generate one
-      if (!('id' in params)){
-          params.id = shortid.generate();
-      }
-
-      // unshift to add to the top of page
-      const newAlert = {
-        id: params.id,
-        type: params.type,
-        message: params.message
-      };
-      
+    _update(state, track_data) {
       return {
         ...state,
-        alerts: [].concat([newAlert], state.alerts)
-      }
-    },
-    destroy(state, id) {
-      return { 
-        ...state, 
-        alerts: state.alerts.filter(alert => alert.id != id)
+        [track_data.id]: track_data
       }
     }
-  }
+  },
+  effects: {
+    async reloadTrack(payload, rootState) {
+      // update() should be called with no arguments to
+      // refresh the current user and update the global state
+      const response = await burgeonAPI.getTrack(payload.track_id);
+      if (response.status == 'success'){
+        this._update(response.data);
+      }
+    },
+    async reloadTracks(payload, rootState) {
+      // update() should be called with no arguments to
+      // refresh the current user and update the global state
+      const response = await burgeonAPI.getTracks();
+      if (response.status == 'success'){
+        for (let track in response.data){
+          this._update(response.data[track]);
+        }
+      }
+    },
+    async createTrack(payload, rootState) {
+      // update() should be called with no arguments to
+      // refresh the current user and update the global state
+      console.log(payload);
+      const response = await burgeonAPI.createTrack(payload);
+      if (response.status == 'success'){
+        this.reloadTracks();
+      }
+    },
+    async deleteTrack(payload, rootState) {
+      // update() should be called with no arguments to
+      // refresh the current user and update the global state
+      const response = await burgeonAPI.deleteTrack(payload.track_id);
+      if (response.status == 'success'){
+        this.reloadTracks();
+      }
+    },
+    async updateTrack(payload, rootState) {
+      // update() should be called with no arguments to
+      // refresh the current user and update the global state
+      const response = await burgeonAPI.updateTrack(payload.track_id, payload);
+      if (response.status == 'success'){
+        this.reloadTracks();
+      }
+    },
+  },
 }

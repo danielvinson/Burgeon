@@ -10,7 +10,7 @@ import SettingsMenu from './SettingsMenu.js';
 
 import Icon from '../../components/Icons.js';
 
-import './Profile.css';
+import './HeaderIcons.css';
 
 class Profile extends Component {
   constructor(props) {

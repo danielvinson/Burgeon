@@ -10,6 +10,7 @@ import Footer from './containers/Footer/Footer';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
+import Tracks from './containers/Tracks/Tracks';
 
 export default class Burgeon extends Component {
   constructor(props) {

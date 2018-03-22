@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import burgeonAPI from '../../api.js';
 
-import Profile from './Profile.js';
+import HeaderIcons from './HeaderIcons.js';
 
 import './Header.css';
 
@@ -14,7 +14,7 @@ const Header = (props) => {
         <div className="title">
           <Link to="/">Burgeon</Link>
         </div>
-        <Profile />
+        <HeaderIcons />
       </div>
     </div>
   )
