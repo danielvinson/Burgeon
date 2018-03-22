@@ -96,7 +96,13 @@ let burgeonAPI = {
     getUser() {
         // Returns information on the currently logged in user
         return new Promise((resolve, reject) => {
-            this._get('/auth/user').then((response) => { resolve(response) });
+            this._get('/user').then((response) => { resolve(response) });
+        });
+    },
+    
+    updateUserSettings(data) {
+        return new Promise((resolve, reject) => {
+            this._put('/user', data).then((response) => { resolve(response) });
         });
     },
     
@@ -110,9 +116,9 @@ let burgeonAPI = {
         });
     },
     
-    getProfile() {
+    getProfile(user_id) {
         return new Promise((resolve, reject) => {
-            this._get('').then((response) => { resolve(response) });
+            this._get('/profile/' + user_id).then((response) => { resolve(response) });
         })
     },
     
@@ -147,6 +153,40 @@ let burgeonAPI = {
     deleteTrack(track_id) {
         return new Promise((resolve, reject) => {
             this._delete('/tracks/' + track_id).then((response) => { resolve(response) });
+        })
+    },
+    
+    /* Goals
+        API for interaction with Goals
+    */
+    
+    getGoals() {
+        return new Promise((resolve, reject) => {
+            this._get('/goals').then((response) => { resolve(response) });
+        })
+    },
+    
+    getGoal(goal_id) {
+        return new Promise((resolve, reject) => {
+            this._get('/goals/' + goal_id).then((response) => { resolve(response) });
+        })
+    },
+    
+    createGoal(data) {
+        return new Promise((resolve, reject) => {
+            this._post('/goals', data).then((response) => { resolve(response) });
+        })
+    },
+    
+    updateGoal(goal_id, data) {
+        return new Promise((resolve, reject) => {
+            this._put('/goals/' + goal_id, data).then((response) => { resolve(response) });
+        })
+    },
+    
+    deleteGoal(goal_id) {
+        return new Promise((resolve, reject) => {
+            this._delete('/goals/' + goal_id).then((response) => { resolve(response) });
         })
     },
 }

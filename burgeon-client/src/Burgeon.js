@@ -10,7 +10,7 @@ import Footer from './containers/Footer/Footer';
 import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
-import Tracks from './containers/Tracks/Tracks';
+import UserSettings from './containers/UserSettings/UserSettings';
 
 export default class Burgeon extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class Burgeon extends Component {
   
   componentWillMount() {
     // Initialize login state
-    dispatch.user.update();
+    dispatch.user.refresh();
   }
   
   render() {
@@ -33,6 +33,7 @@ export default class Burgeon extends Component {
           <Route exact path="/" component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/settings" component={UserSettings} />
         </div>
         <Footer />
       </React.Fragment>

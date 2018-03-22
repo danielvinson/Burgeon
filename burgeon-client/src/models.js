@@ -41,10 +41,15 @@ export const alerts = {
 }
 
 export const user = {
+  // The currently logged in user.
   state: {
     'loggedIn': false,
     'user_id': null,
     'email': '',
+    'username': '',
+    'first_name': '',
+    'last_name': '',
+    'profile_picture': '',
     'points': 0,
     'staff': false,
     'registered_on': null,
@@ -60,6 +65,10 @@ export const user = {
         loggedIn: true,
         user_id: user.user_id,
         email: user.email,
+        username: user.username,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        profile_picture: user.profile_picture,
         points: user.points,
         staff: user.staff,
         registered_on: user.registered_on
@@ -73,7 +82,7 @@ export const user = {
     },
   },
   effects: {
-    async update(payload, rootState) {
+    async refresh(payload, rootState) {
       // update() should be called with no arguments to
       // refresh the current user and update the global state
       const response = await burgeonAPI.getUser();
@@ -85,7 +94,7 @@ export const user = {
       const response = await burgeonAPI.logout();
       if (response.status == 'success'){
           this._logout();
-          this.update();
+          this.refresh();
           return true;
       } else {
         return false;
@@ -98,16 +107,22 @@ export const user = {
         payload.rememberMe
       );
       if (response.status == 'success'){
-          this.update();
+          this.refresh();
           return true;
       } else {
         return false;
       }
     },
+    async updateUserSettings(data, rootState) {
+      const response = await burgeonAPI.updateUserSettings(data);
+      if (response.status == 'success'){
+          this.refresh();
+      }
+    },
     async addPoints(points, rootState) {
       const response = await burgeonAPI.addPoints(points);
       if (response.status == 'success'){
-          this.update();
+          this.refresh();
       }
     }
   }

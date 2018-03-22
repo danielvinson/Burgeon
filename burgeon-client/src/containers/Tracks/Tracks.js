@@ -45,13 +45,11 @@ class Tracks extends Component {
             <div className="trackContainer" key={track.id}>
                 <div className="trackInfo">
                     <span>Name: {track.name}</span>
-                    <span>Goals: {track.goals}</span>
                 </div>
                 <div className="trackCompletion">
                     <span>100%</span>
                     <span>8/8</span>
                 </div>
-                
             </div>
         )
     });

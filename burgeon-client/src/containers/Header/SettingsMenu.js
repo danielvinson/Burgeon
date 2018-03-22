@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { dispatch } from '@rematch/core'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import history from '../../index.js';
 import DropDownMenu from '../../components/DropDownMenu.js';
@@ -37,10 +38,10 @@ class SettingsMenu extends Component {
             </div>
             <div className="settingsMenuItemGroup">
               <div className="settingsMenuItem">
-                <div>Settings</div>
+                <div><Link to="/settings">Settings</Link></div>
               </div>
               <div className="settingsMenuItem">
-                <div>View Your Profile</div>
+                <div><Link to="/profile">View Your Profile</Link></div>
               </div>
             </div>
             <div className="settingsMenuItemGroup">
