@@ -132,6 +132,7 @@ export const tracks = {
   state: {},
   reducers: {
     _update(state, track_data) {
+      console.log(track_data);
       return {
         ...state,
         [track_data.id]: track_data

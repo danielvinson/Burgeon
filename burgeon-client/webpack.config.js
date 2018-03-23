@@ -25,7 +25,7 @@ module.exports = {
                     'style-loader',
                     'css-loader'
                 ],
-                include: APP_DIR,
+                include: [APP_DIR, path.join(__dirname, 'node_modules')],
             }
         ],
     },

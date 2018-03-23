@@ -1,0 +1,104 @@
+.TestLayout {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.layoutTitle {
+    width: 100%;
+    height: 35px;
+    
+    background: var(--light-green);
+}
+
+.layoutContent {
+    width: 100%;
+    height: 100%;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.goalsMenu {
+    width: 20%;
+    height: 100%;
+    
+    padding: 15px;
+    
+    background: rgba(0,0,0,.3);
+}
+
+.goalItem {
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    padding: 3px;
+    margin-bottom: 3px;
+    background: rgba(255,255,255,0.3);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.goalItem.selected {
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.goalItemName {
+    height: auto;
+    width: 100%;
+}
+
+.goalItemCompletion {
+    height: 3px;
+    width: 100%;
+    background: var(--light-green);
+}
+
+.tasksMenu {
+    width: 20%;
+    height: 100%;
+    
+    padding: 15px;
+    
+    background: rgba(0,0,0,.1);
+}
+
+.taskItem {
+    width: 100%;
+    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.1);
+    padding: 3px;
+    margin-bottom: 3px;
+    background: rgba(255,255,255,0.3);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.taskItem.selected {
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.taskItemName {
+    
+}
+
+.taskItemIcon {
+    
+}
+
+.notepad {
+    width: 80%;
+    height: 100%;
+}
