@@ -29,17 +29,13 @@
     width: 20%;
     height: 100%;
     
-    padding: 15px;
-    
     background: rgba(0,0,0,.3);
 }
 
 .goalItem {
     width: 100%;
     cursor: pointer;
-    border: 2px solid rgba(255,255,255,0.1);
-    padding: 3px;
-    margin-bottom: 3px;
+    padding: 8px;
     background: rgba(255,255,255,0.3);
     
     display: flex;
@@ -49,7 +45,7 @@
 }
 
 .goalItem.selected {
-    border: 2px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.5);
 }
 
 .goalItemName {
@@ -67,17 +63,13 @@
     width: 20%;
     height: 100%;
     
-    padding: 15px;
-    
     background: rgba(0,0,0,.1);
 }
 
 .taskItem {
     width: 100%;
     cursor: pointer;
-    border: 2px solid rgba(255,255,255,0.1);
-    padding: 3px;
-    margin-bottom: 3px;
+    padding: 8px;
     background: rgba(255,255,255,0.3);
 
     display: flex;
@@ -87,7 +79,7 @@
 }
 
 .taskItem.selected {
-    border: 2px solid rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.5);
 }
 
 .taskItemName {

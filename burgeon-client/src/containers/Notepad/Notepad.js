@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Editor, EditorState, RichUtils, getDefaultKeyBinding } from 'draft-js';
+import { Editor, EditorState, RichUtils, getDefaultKeyBinding, convertToRaw, convertFromRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
 import BlockStyleControls from './BlockStyleControls.js';
@@ -23,7 +23,7 @@ const styleMap = {
 class Notepad extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {editorState: EditorState.createEmpty()};
+    this.state = { editorState: null };
     
     this.focus = () => this.refs.editor.focus();
     
@@ -34,6 +34,32 @@ class Notepad extends React.Component {
     this.toggleBlockType = this._toggleBlockType.bind(this);
     this.toggleInlineStyle = this._toggleInlineStyle.bind(this);
     this.getBlockStyle = this._getBlockStyle.bind(this);
+    this.handleSaveNotepad = this._handleSaveNotepad.bind(this);
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    // Check if we have a saved Notepad and load it, else create an empty one
+    const taskId = nextProps.taskId;
+    console.log(taskId);
+
+    if (taskId && (taskId != this.state.currentTask)){
+      this.props.reloadTask(taskId).then(() => {
+        
+        const task = this.props.tasks[taskId];
+        console.log(task);
+        
+        let editorState = null;
+        if (task.notepad && task.notepad != ''){
+          const contentState = convertFromRaw(JSON.parse(task.notepad));
+          editorState = EditorState.createWithContent(contentState);
+          console.log('editor loaded');
+        } else {
+          editorState = EditorState.createEmpty();
+          console.log('empty editor created');
+        }
+        this.setState({editorState: editorState, currentTask: taskId });
+      });
+    }
   }
   
   _handleKeyCommand(command, editorState) {
@@ -85,20 +111,37 @@ class Notepad extends React.Component {
     );
   }
   
+  _handleSaveNotepad() {
+    console.log('test');
+    console.log(this.state.editorState);
+    const editorState = this.state.editorState;
+    const contentState = editorState.getCurrentContent();
+    const contentString = JSON.stringify(convertToRaw(contentState));
+    this.props.updateNotepad(this.state.currentTask, contentString).then(() => {
+      console.log('content saved');
+    });
+  }
+  
+  
   render() {
     const {editorState} = this.state;
     // If the user changes block type before entering any text, we can
     // either style the placeholder or hide it. Let's just hide it now.
     let className = 'RichEditor-editor';
-    var contentState = editorState.getCurrentContent();
-    if (!contentState.hasText()) {
-      if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-        className += ' RichEditor-hidePlaceholder';
+    if (editorState){
+      
+      var contentState = editorState.getCurrentContent();
+      if (!contentState.hasText()) {
+        if (contentState.getBlockMap().first().getType() !== 'unstyled') {
+          className += ' RichEditor-hidePlaceholder';
+        }
       }
+      
     }
+
     return (
       <div className="Notepad">
-        {this.props.taskId ? (
+        {editorState ? (
         <div className="RichEditor-root">
           <BlockStyleControls
             editorState={editorState}
@@ -108,6 +151,12 @@ class Notepad extends React.Component {
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
           />
+          <div 
+            className="saveButton" 
+            onClick={this.handleSaveNotepad}
+          >
+            <span>Save Changes</span>
+          </div>
           <div className={className} onClick={this.focus}>
             <Editor
               blockStyleFn={this.getBlockStyle}
@@ -122,10 +171,24 @@ class Notepad extends React.Component {
             />
           </div>
         </div>
-        ) : (null)}
+        ) : (<div>Loading...</div>)}
       </div>
     );
   }
 }
 
-export default Notepad
+const mapState = state => ({
+  user: state.user,
+  tracks: state.tracks,
+  goals: state.goals,
+  tasks: state.tasks
+});
+
+const mapDispatch = dispatch => ({
+  createAlert: data => dispatch.alerts.create(data),
+  
+  reloadTask: id => dispatch.tasks.reloadTask({'task_id': id}),
+  updateNotepad: (task_id, content) => dispatch.tasks.updateTask({'notepad': content, 'task_id': task_id})
+});
+
+export default connect(mapState, mapDispatch)(Notepad);

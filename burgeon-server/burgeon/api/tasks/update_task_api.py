@@ -26,6 +26,8 @@ class UpdateTaskAPI(MethodView):
                         task.complete = True
                     else:
                         task.complete = False
+                if 'notepad' in put_data.keys():
+                    task.notepad = put_data['notepad']
                 db.session.commit()
                 responseObject = {
                     'status': 'success',

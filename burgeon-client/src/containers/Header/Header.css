@@ -17,14 +17,14 @@
     align-items: center;
     justify-content: space-between;
     
-    height: 100%;
+    /*height: 100%;*/
 
     margin-left: var(--global-margin-left);
     margin-right: var(--global-margin-right);
 }
 
 .headerContainer .title {
-    height: 100%;
+    /*height: 100%;*/
     width: 190px;
     
     font-family: var(--header-font);

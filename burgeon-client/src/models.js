@@ -261,7 +261,7 @@ export const tasks = {
     async updateTask(payload, rootState) {
       const response = await burgeonAPI.updateTask(payload.task_id, payload);
       if (response.status == 'success'){
-        this.reloadTask(payload.goal_id);
+        this.reloadTask({'task_id': payload.task_id});
       }
     },
   },
