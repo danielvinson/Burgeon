@@ -39,7 +39,7 @@ export default class Burgeon extends Component {
           <Route path="/settings" component={UserSettings} />
           <Route path="/track/:id" component={TrackDetail} />
           <Route path="/goal/:id" component={GoalDetail} />
-          <Route path="/test" component={TestLayout} />
+          <Route path="/test/:id" component={TestLayout} />
         </div>
         {/*<Footer />*/}
       </React.Fragment>

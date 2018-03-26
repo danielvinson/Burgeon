@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import './StyleButton.css';
+
 class StyleButton extends Component {
   constructor() {
     super();
@@ -10,9 +12,9 @@ class StyleButton extends Component {
     };
   }
   render() {
-    let className = 'RichEditor-styleButton';
+    let className = 'Notepad-styleButton';
     if (this.props.active) {
-      className += ' RichEditor-activeButton';
+      className += ' Notepad-activeButton';
     }
     return (
       <span className={className} onMouseDown={this.onToggle}>

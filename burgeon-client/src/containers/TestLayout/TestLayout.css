@@ -8,11 +8,22 @@
     justify-content: flex-start;
 }
 
-.layoutTitle {
+.layoutTitleContainer {
     width: 100%;
-    height: 35px;
+    height: auto;
     
-    background: var(--light-green);
+    font-size: 1em;
+    
+    background: var(--mid-green);
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.layoutTitle {
+    padding: 8px;
 }
 
 .layoutContent {
@@ -26,7 +37,7 @@
 }
 
 .goalsMenu {
-    width: 20%;
+    width: 350px;
     height: 100%;
     
     background: rgba(0,0,0,.3);
@@ -45,7 +56,7 @@
 }
 
 .goalItem.selected {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.1);
 }
 
 .goalItemName {
@@ -60,10 +71,20 @@
 }
 
 .tasksMenu {
-    width: 20%;
     height: 100%;
+    overflow: hidden;
     
     background: rgba(0,0,0,.1);
+    
+    transition: width 0.3s ease-out;
+}
+
+.tasksMenu.closed {
+    width: 15px;
+}
+
+.tasksMenu.open {
+    width: 450px;
 }
 
 .taskItem {
@@ -79,7 +100,7 @@
 }
 
 .taskItem.selected {
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.1);
 }
 
 .taskItemName {
@@ -90,7 +111,18 @@
     
 }
 
+.menuInput {
+    width: 100%;
+    
+    padding: 5px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 .notepad {
-    width: 80%;
+    width: 100%;
     height: 100%;
 }

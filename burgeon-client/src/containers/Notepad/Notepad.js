@@ -23,7 +23,7 @@ const styleMap = {
 class Notepad extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { editorState: null };
+    this.state = { editorState: null, saveMessage: '', };
     
     this.focus = () => this.refs.editor.focus();
     
@@ -118,7 +118,11 @@ class Notepad extends React.Component {
     const contentState = editorState.getCurrentContent();
     const contentString = JSON.stringify(convertToRaw(contentState));
     this.props.updateNotepad(this.state.currentTask, contentString).then(() => {
-      console.log('content saved');
+      this.setState({ saveMessage: 'Notes saved...'}, () => {
+        setTimeout(() => {
+          this.setState({ saveMessage: ''})
+        }, 2000)
+      })
     });
   }
   
@@ -151,11 +155,11 @@ class Notepad extends React.Component {
             editorState={editorState}
             onToggle={this.toggleInlineStyle}
           />
-          <div 
-            className="saveButton" 
-            onClick={this.handleSaveNotepad}
-          >
-            <span>Save Changes</span>
+          <div className="saveButtonContainer">
+            <div className="saveButton" onClick={this.handleSaveNotepad}>
+              <span className="saveButtonText">Save Changes</span>
+            </div>
+            <span className="saveButtonMessage">{this.state.saveMessage}</span>
           </div>
           <div className={className} onClick={this.focus}>
             <Editor
@@ -171,7 +175,7 @@ class Notepad extends React.Component {
             />
           </div>
         </div>
-        ) : (<div>Loading...</div>)}
+        ) : (null)}
       </div>
     );
   }

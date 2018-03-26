@@ -14,7 +14,7 @@ class TestLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      trackId: 1,
+      trackId: null,
       selectedGoal: null,
       selectedTask: null,
       goalNameInput: '',
@@ -27,16 +27,21 @@ class TestLayout extends Component {
     this.handleTaskNameInput = this.handleTaskNameInput.bind(this);
     this.handleAddGoal = this.handleAddGoal.bind(this);
     this.handleAddTask = this.handleAddTask.bind(this);
-    
   }
 
   componentDidMount() {
-    this.props.reloadTrack(this.state.trackId);
+    // Set track for this component and load the Track into global state
+    const trackId = this.props.match.params.id;
+    if (trackId){
+      this.props.reloadTrack(trackId);
+      this.setState({ trackId: trackId });
+    }
   }
 
   handleGoalSelect(goal_id) {
     this.setState({
-      selectedGoal: goal_id
+      selectedGoal: goal_id,
+      selectedTask: null
     });
   }
 
@@ -100,7 +105,8 @@ class TestLayout extends Component {
   }
 
   render() {
-    const track = find(this.props.tracks, {'id': this.state.trackId});
+    //const track = find(this.props.tracks, {'id': this.state.trackId});
+    const track = this.props.tracks[this.state.trackId];
     
     let goalElements = <div></div>;
     if (track) {
@@ -121,7 +127,6 @@ class TestLayout extends Component {
         if (numTasks != 0) {
           goalCompletionPercent = (numTasksComplete / numTasks) * 100;
         }
-        //////////////////
 
         return (
           <div 
@@ -161,25 +166,29 @@ class TestLayout extends Component {
 
     return (
       <div className="TestLayout">
-        <div className="LayoutTitle">{this.state.trackId}</div>
+        <div className="layoutTitleContainer">
+          <span className="layoutTitle">{track ? ('name' in track ? track.name : '') : ''}</span>
+        </div>
         <div className="LayoutContent">
           <div className="goalsMenu">
             <div>
                 {goalElements}
             </div>
-            <div>
+            <div className="menuInput">
               <input type="text" value={this.state.goalNameInput} onChange={this.handleGoalNameInput} />
               <button onClick={this.handleAddGoal}>Add Goal</button>
             </div>
           </div>
-          <div className="tasksMenu">
+          <div className={this.state.selectedGoal ? 'tasksMenu open' : 'tasksMenu closed'}>
             <div>
                 {taskElements}
             </div>
-            <div>
+            {this.state.selectedGoal &&
+            <div className="menuInput">
               <input type="text" value={this.state.taskNameInput} onChange={this.handleTaskNameInput} />
               <button onClick={this.handleAddTask}>Add Task</button>
             </div>
+            }
           </div>
           <div className="notepad">
             <Notepad taskId={this.state.selectedTask} />
