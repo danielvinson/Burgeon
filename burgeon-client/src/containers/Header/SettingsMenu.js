@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import history from '../../index.js';
+import history from '../../Burgeon.js';
 import DropDownMenu from '../../components/DropDownMenu.js';
 
 import './SettingsMenu.css';
 
-class SettingsMenu extends Component {
+export class SettingsMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -33,7 +33,7 @@ class SettingsMenu extends Component {
           >
             <div className="settingsMenuItemGroup">
               <div className="settingsMenuItem">
-                <div>Welcome, {this.props.user.email || ''}</div>
+                <div>Welcome, {this.props.user ? this.props.user.email : ''}</div>
               </div>
             </div>
             <div className="settingsMenuItemGroup">

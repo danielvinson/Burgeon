@@ -12,7 +12,7 @@ import Icon from '../../components/Icons.js';
 
 import './HeaderIcons.css';
 
-class Profile extends Component {
+export class HeaderIcons extends Component {
   constructor(props) {
     super(props);
 
@@ -50,10 +50,13 @@ class Profile extends Component {
   }
 
   render () {
-    const loggedIn = this.props.user.loggedIn || false;
+    let loggedIn = false;
+    if (this.props.user && this.props.user.loggedIn){
+      loggedIn = true;
+    }
     
     return (
-      <div className="Profile">
+      <div className="HeaderIcons">
         {loggedIn ? (
           <div className="profileContainer loggedIn">
             <div className="profileIconGroup bell" onClick={this.handleIconClick}>
@@ -94,4 +97,4 @@ const mapState = state => ({
   user: state.user
 });
 
-export default connect(mapState)(Profile);
+export default connect(mapState)(HeaderIcons);
