@@ -133,9 +133,15 @@ sudo pip3 install --upgrade pip
 sudo pip3 install /burgeon-server/requirements.txt
 ```
 
+Initialize the database
+```
+cd /burgeon/Burgeon/burgeon-server
+sudo -E python3 -m flask create_db
+```
+
 Install frontend dependencies and build the frontend
 ```
-cd burgeon-client/
+cd /burgeon/Burgeon/burgeon-client
 sudo npm install
 sudo npm install --global webpack
 sudo node_modules/.bin/webpack
