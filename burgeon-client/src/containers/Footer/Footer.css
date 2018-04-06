@@ -10,12 +10,14 @@
 }
 
 .footerContainer {
+    height: 250px;
+    
     margin-left: var(--global-margin-left);
     margin-right: var(--global-margin-right);
     
     display: flex;
     flex-direction: row;
-    align-items: stretch;
+    align-items: flex-end;
     justify-content: flex-end;
 }
 
@@ -25,5 +27,5 @@
 }
 
 .footerItem {
-    
+    font-size: 0.7em;
 }
