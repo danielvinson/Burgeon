@@ -49,7 +49,7 @@ db = SQLAlchemy(app)
 from burgeon import cli
 
 # Load frontend views
-from burgeon import views
+from burgeon.views import *
 
 # Initialize the app blueprints for the API
 from burgeon.api.auth import auth_blueprint
