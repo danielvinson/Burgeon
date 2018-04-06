@@ -1,3 +1,5 @@
+Note for readers - First of all, thanks for taking a look at my project!  This project is based on a small startup idea I had, which I might develop more in the future, but for now it is on hold.  Everything in this repo totals about 3 weeks of work total in my free time, which is not a lot of hours.  There are obviously a lot of incomplete sections, unpolished edges, and completely missing features.  Any feedback would be appreciated :)
+
 # Burgeon
 
 Burgeoning.me
