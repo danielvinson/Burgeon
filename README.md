@@ -12,7 +12,8 @@ The inspiration of this project so far is that I've been wanting to use somethin
 
 ## Design Overview
 
-Screenshot of the current design (the actual content will look completely different, this is just a placeholder):
+Screenshot of a few of the current designs (the actual content will look completely different, this is just a placeholder):
+![burgeon-test2](/documentation/burgeon-test2.png)
 ![burgeon](/documentation/burgeon.png)
 
 A *Track* is a set of goals.  Each *Track* will have an expected completion time (adjustable, maybe slow-med-fast-custom).  Each track will have an associated reward, which initially will be points, but can turn into something we verify and provide real, physical rewards for.

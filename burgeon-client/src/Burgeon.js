@@ -18,7 +18,8 @@ import Register from './containers/Register/Register';
 import UserSettings from './containers/UserSettings/UserSettings';
 import TrackDetail from './containers/TrackDetail/TrackDetail';
 import GoalDetail from './containers/GoalDetail/GoalDetail';
-import TestLayout from './containers/TestLayout/TestLayout';
+//import TestLayout from './containers/TestLayout/TestLayout';
+import TestLayout2 from './containers/TestLayout2/TestLayout2';
 
 import * as models from './models'
 import './base.css';
@@ -46,8 +47,8 @@ export default class Burgeon extends Component {
         <ConnectedRouter history={history}>
           <React.Fragment>
             <Alerts />
-            <Header />
-            <Menu />
+            {/*<Header />*/}
+            {/*<Menu />*/}
             <div className="content">
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
@@ -55,9 +56,10 @@ export default class Burgeon extends Component {
               <Route path="/settings" component={UserSettings} />
               <Route path="/track/:id" component={TrackDetail} />
               <Route path="/goal/:id" component={GoalDetail} />
-              <Route path="/test/:id" component={TestLayout} />
+              {/*<Route path="/test/:id" component={TestLayout} />*/}
+              <Route path="/test2/:id" component={TestLayout2} />
             </div>
-            <Footer />
+            {/*<Footer />*/}
           </React.Fragment>
         </ConnectedRouter>
       </Provider>
