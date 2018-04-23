@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import burgeonAPI from '../../api.js';
-
 import Icon from '../../components/Icons.js';
-import Button from '../../components/Button.js';
 
-import './Tracks.css';
+import './TrackList.css';
 
 class Tracks extends Component {
   constructor(props) {
@@ -50,15 +47,15 @@ class Tracks extends Component {
         let numTasksComplete = 0;
         let trackCompletionPercent = 0;
         
-        for (let goal in track['goals']){
-          const goal = track['goals'][goal];
+        for (let g in track['goals']){
+          const goal = track['goals'][g];
           numGoals += 1;
           let goalComplete = true;
           if (goal['tasks'].length == 0){
             goalComplete = false;
           }
-          for (let task in goal['tasks']){
-            const task = goal['tasks'][task];
+          for (let t in goal['tasks']){
+            const task = goal['tasks'][t];
             numTasks += 1;
             if (task['complete'] === true){
               numTasksComplete += 1;
@@ -95,7 +92,7 @@ class Tracks extends Component {
               </div>
             </Link>
           </div>
-        )
+        );
     });
     
     return(
@@ -108,7 +105,7 @@ class Tracks extends Component {
             <button onClick={this.handleAddTrack}>Add Track</button>
           </div>
         </div>
-    )
+    );
   }
 }
 

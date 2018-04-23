@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { Editor, EditorState, RichUtils, getDefaultKeyBinding, convertToRaw, convertFromRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
@@ -40,7 +39,6 @@ class Notepad extends React.Component {
   componentWillReceiveProps(nextProps) {
     // Check if we have a saved Notepad and load it, else create an empty one
     const taskId = nextProps.taskId;
-    console.log(taskId);
 
     if (taskId && (taskId != this.state.currentTask)){
       this.props.reloadTask(taskId).then(() => {

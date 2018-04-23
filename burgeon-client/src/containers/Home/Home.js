@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { dispatch } from '@rematch/core'
+import { dispatch } from '@rematch/core';
 
 import TrackList from '../../containers/TrackList/TrackList.js';
 

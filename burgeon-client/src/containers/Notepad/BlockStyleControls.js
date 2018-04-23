@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import StyleButton from './StyleButton.js'
+import StyleButton from './StyleButton.js';
 
 const BLOCK_TYPES = [
   {label: 'H1', style: 'header-one'},
@@ -38,4 +38,4 @@ const BlockStyleControls = (props) => {
   );
 };
 
-export default BlockStyleControls
+export default BlockStyleControls;

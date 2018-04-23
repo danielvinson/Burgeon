@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Icon from '../../components/Icons.js';
@@ -14,10 +14,10 @@ class UserProfile extends Component {
   }
   
   render() {
-      return(
-        <div>
-        </div>
-      )
+    return(
+      <div>
+      </div>
+    );
   }
 }
 

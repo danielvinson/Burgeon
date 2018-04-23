@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import StyleButton from './StyleButton.js'
+import StyleButton from './StyleButton.js';
 
 var INLINE_STYLES = [
   {label: 'Bold', style: 'BOLD'},
@@ -28,4 +28,4 @@ const InlineStyleControls = (props) => {
   );
 };
 
-export default InlineStyleControls
+export default InlineStyleControls;

@@ -24,4 +24,4 @@ class StyleButton extends Component {
   }
 }
 
-export default StyleButton
+export default StyleButton;

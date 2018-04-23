@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { dispatch } from '@rematch/core';
 import { Link } from 'react-router-dom';
 
-import burgeonAPI from '../../api.js';
-
 import Icon from '../../components/Icons.js';
 import Button from '../../components/Button.js';
 
