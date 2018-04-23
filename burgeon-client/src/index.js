@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import {Burgeon} from './Burgeon';
+import { Burgeon } from './Burgeon';
 
 render(
     <Burgeon />,
