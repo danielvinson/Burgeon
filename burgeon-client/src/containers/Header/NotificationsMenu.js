@@ -25,7 +25,7 @@ const NotificationsMenu = props => {
           <Icon icon="x" width={12} />
         </div>
       </DropDownMenu>
-    )
-}
+    );
+};
 
-export default NotificationsMenu
+export default NotificationsMenu;

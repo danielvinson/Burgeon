@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux'
-
-import burgeonAPI from '../../api.js';
+import { connect } from 'react-redux';
 
 import NotificationsMenu from './NotificationsMenu.js';
 import SettingsMenu from './SettingsMenu.js';
@@ -66,12 +63,6 @@ export class HeaderIcons extends Component {
                 updateVisibility={this.handleNotificationsVisibilityUpdate} 
               />
             </div>
-            {/*<div className="profileIconGroup flame">
-              <div className="profilePoints">
-                {this.props.user.points}
-              </div>
-              <Icon icon={'flame'} width={12} />
-            </div>*/}
             <div className="profileIconGroup gear" onClick={this.handleIconClick}>
               <Icon icon='gear' width={22} />
               <SettingsMenu 
@@ -89,7 +80,7 @@ export class HeaderIcons extends Component {
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 

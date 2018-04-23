@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { dispatch } from '@rematch/core'
 
-import burgeonAPI from '../../api.js';
-
-import Icon from '../../components/Icons.js';
-import Button from '../../components/Button.js';
-
-import Tracks from '../../containers/Tracks/Tracks.js';
+import TrackList from '../../containers/TrackList/TrackList.js';
 
 import './Home.css';
 
@@ -39,7 +34,7 @@ export default class Home extends Component {
     
     return(
         <div className="Home">
-          <Tracks />
+          <TrackList />
         </div>
     )
   }

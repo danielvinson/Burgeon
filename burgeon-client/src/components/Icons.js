@@ -16,13 +16,13 @@ class Icon extends Component {
             className={`icon ${this.props.icon}-icon`}
             dangerouslySetInnerHTML={{ __html: svg }} 
         />
-    )
+    );
   }
 }
 
 Icon.propTypes = {
   icon: PropTypes.string,
   width: PropTypes.number,
-}
+};
 
 export default Icon;

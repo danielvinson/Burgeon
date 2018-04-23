@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { dispatch } from '@rematch/core'
-import { connect } from 'react-redux'
+import { dispatch } from '@rematch/core';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
@@ -52,7 +52,7 @@ export class SettingsMenu extends Component {
           </DropDownMenu>
         ) : null}
       </React.Fragment>
-    )
+    );
   }
 }
 

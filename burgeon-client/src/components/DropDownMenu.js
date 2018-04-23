@@ -41,7 +41,7 @@ class DropDownMenu extends Component {
             </div>
           }
         </div>
-    )
+    );
   }
 }
 
@@ -50,6 +50,6 @@ DropDownMenu.propTypes = {
   children: PropTypes.array,
   visible: PropTypes.bool,
   updateVisibility: PropTypes.func
-}
+};
 
-export default DropDownMenu
+export default DropDownMenu;

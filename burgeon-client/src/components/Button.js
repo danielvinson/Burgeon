@@ -40,7 +40,7 @@ class Button extends Component {
           </span>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -55,6 +55,6 @@ Button.propTypes = {
   progressBarColor: PropTypes.string,
   buttonClassName: PropTypes.string,
   wrapperClassName: PropTypes.string,
-}
+};
 
-export default Button
+export default Button;

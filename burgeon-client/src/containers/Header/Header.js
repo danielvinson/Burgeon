@@ -17,7 +17,7 @@ const Header = (props) => {
         <HeaderIcons />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Header;

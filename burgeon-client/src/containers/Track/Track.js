@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import find from 'lodash/find';
 
 import Icon from '../../components/Icons.js';
-import Button from '../../components/Button.js';
-
 import HeaderIcons from '../../containers/Header/HeaderIcons.js';
-
 import Notepad from '../../containers/Notepad/Notepad.js';
 
-import './TestLayout2.css';
+import './Track.css';
 
 class TestLayout extends Component {
   constructor(props) {
@@ -139,7 +136,7 @@ class TestLayout extends Component {
             <div className="goalItemName">{goal.name}</div>
             <div className="goalItemCompletion" style={{ width: `${goalCompletionPercent}%`}}></div>
           </div>
-        )
+        );
       });
     }
 
@@ -162,7 +159,7 @@ class TestLayout extends Component {
                 ) : (null)}
               </div>
           </div>
-        )
+        );
       });
     }
 
@@ -207,7 +204,7 @@ class TestLayout extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
