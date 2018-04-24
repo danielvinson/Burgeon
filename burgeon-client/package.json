@@ -9,7 +9,8 @@
   "jest": {
     "moduleNameMapper": {
       "\\.(css)$": "identity-obj-proxy"
-    }
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/util/setupTests.js"
   },
   "author": "",
   "license": "ISC",

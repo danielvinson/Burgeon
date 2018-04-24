@@ -191,6 +191,9 @@ __Frontend__
 * [Redux]() - State manager
 * [Rematch]() - Redux wrapper for better syntax/defaults
 * [Webpack]() - Build Tool
+* [Jest]() - Testing
+* [Enzyme]()
+* [Chai]()
 
 ## Author
 

@@ -36,6 +36,6 @@ export default class Home extends Component {
         <div className="Home">
           <TrackList />
         </div>
-    )
+    );
   }
 }

@@ -6,7 +6,7 @@ import Icon from '../../components/Icons.js';
 
 import './Alerts.css';
 
-const Alerts = props => (
+export const Alerts = props => (
   <div className="Alerts">
     <CSSTransitionGroup
         transitionName="alertTransitions"

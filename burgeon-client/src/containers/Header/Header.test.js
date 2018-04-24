@@ -12,11 +12,7 @@ import Icon from '../../components/Icons.js';
 import DropDownMenu from '../../components/DropDownMenu.js';
 
 import Enzyme from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
 
 describe('<Header />', () => {
   // Logged In
