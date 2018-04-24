@@ -7,7 +7,7 @@ import Button from '../../components/Button.js';
 
 import './UserSettings.css';
 
-class UserSettings extends Component {
+export class UserSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
