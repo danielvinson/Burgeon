@@ -12,6 +12,7 @@ import Home from './containers/Home/Home';
 import Login from './containers/Login/Login';
 import Register from './containers/Register/Register';
 import UserSettings from './containers/UserSettings/UserSettings';
+import UserProfile from './containers/UserProfile/UserProfile';
 import Track from './containers/Track/Track';
 
 import * as models from './models';
@@ -48,6 +49,7 @@ export default class Burgeon extends Component {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path="/settings" component={UserSettings} />
+              <Route path="/profile" component={UserProfile} />
               
               {/* Tracks */}
               <Route path="/track/:id" component={Track} />

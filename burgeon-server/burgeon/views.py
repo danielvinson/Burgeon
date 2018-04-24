@@ -12,13 +12,9 @@ from burgeon import app, db
 @app.route('/register')
 @app.route('/settings')
 @app.route('/profile')
-@app.route('/test')
 def route_to_react():
     return render_template('index.html')
 
 @app.route('/track/<int:id>')
-@app.route('/goal/<int:id>')
-@app.route('/test/<int:id>')
-@app.route('/test2/<int:id>')
 def route_to_react_with_id(id):
     return render_template('index.html')

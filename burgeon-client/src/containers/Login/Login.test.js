@@ -1,10 +1,26 @@
+import { expect } from 'chai';
+import { mount } from 'enzyme';
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { Route, Link, MemoryRouter } from 'react-router-dom';
 
 import Login from './Login.js';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Login />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe('Login', () => {
+    let wrapper;
+    
+    beforeEach(() => {
+      wrapper = mount(
+        <MemoryRouter>
+          <Login />
+        </MemoryRouter>
+      );
+    });
+    
+    it('Login should render', () => {
+        expect(wrapper).to.have.length(1);
+    });
+
+    it('Login should render all form fields', () => {
+        expect(wrapper.find('input')).to.have.length(3);
+    });
 });
